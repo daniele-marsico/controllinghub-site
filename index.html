@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ControllingHub — Controllo di gestione per PMI</title>
+<meta name="description" content="Controllo di gestione, budget, reporting e business intelligence per piccole e medie imprese. Senza assumere un controller a tempo pieno.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FBFAF8; --surface:#FFFFFF; --surface-2:#F3F1ED;
+  --ink:#14181F; --ink-2:#4A5260; --ink-3:#7C8492;
+  --line:#E3DFD8; --accent:#1B4D3E; --accent-soft:#E8F0EC; --accent-ink:#1B4D3E;
+  --amber:#B4762A;
+  --radius:14px;
+  --maxw:1080px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1116; --surface:#161B22; --surface-2:#1C222B;
+    --ink:#EDEFF2; --ink-2:#AEB6C2; --ink-3:#7F8896;
+    --line:#262D38; --accent:#7FD6AE; --accent-soft:#16241E; --accent-ink:#7FD6AE;
+    --amber:#E0A458;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1116; --surface:#161B22; --surface-2:#1C222B;
+  --ink:#EDEFF2; --ink-2:#AEB6C2; --ink-3:#7F8896;
+  --line:#262D38; --accent:#7FD6AE; --accent-soft:#16241E; --accent-ink:#7FD6AE;
+  --amber:#E0A458;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:Inter, "Helvetica Neue", Arial, sans-serif;
+  font-size:17px; line-height:1.62; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px}
+h1,h2,h3{line-height:1.15; margin:0; letter-spacing:-0.02em}
+.serif{font-family:"Instrument Serif", Georgia, serif; font-weight:400; letter-spacing:-0.01em}
+p{margin:0 0 1em}
+a{color:inherit}
+
+/* header */
+header{
+  position:sticky; top:0; z-index:50; background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+}
+.nav{display:flex; align-items:center; justify-content:space-between; height:66px}
+.logo{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:-0.03em; font-size:19px; text-decoration:none}
+.mark{width:26px;height:26px;flex:none}
+.navlinks{display:flex; gap:26px; font-size:15px; color:var(--ink-2)}
+.navlinks a{text-decoration:none}
+.navlinks a:hover{color:var(--ink)}
+@media(max-width:760px){ .navlinks{display:none} }
+.btn{
+  display:inline-block; background:var(--accent); color:var(--bg); text-decoration:none;
+  padding:11px 20px; border-radius:999px; font-weight:600; font-size:15px; border:none; cursor:pointer;
+  transition:transform .15s ease, opacity .15s ease;
+}
+.btn:hover{transform:translateY(-1px); opacity:.92}
+.btn-ghost{background:transparent; color:var(--ink); border:1px solid var(--line)}
+
+/* hero */
+.hero{padding:86px 0 64px}
+.eyebrow{
+  display:inline-block; font-size:13px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--accent-ink); background:var(--accent-soft); padding:6px 13px; border-radius:999px; margin-bottom:26px;
+}
+.hero h1{font-size:clamp(34px, 5.4vw, 60px); max-width:16ch; margin-bottom:22px}
+.hero .lede{font-size:clamp(17px,2.1vw,20px); color:var(--ink-2); max-width:58ch; margin-bottom:32px}
+.cta-row{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
+.cta-note{font-size:14px; color:var(--ink-3)}
+
+/* strip */
+.strip{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--surface-2)}
+.strip .wrap{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; padding:0 24px}
+.stat{padding:28px 10px 26px}
+.stat b{display:block; font-family:"Instrument Serif",Georgia,serif; font-size:26px; line-height:1.1; margin-bottom:8px; color:var(--accent-ink)}
+.stat span{font-size:14px; color:var(--ink-2)}
+@media(max-width:760px){ .strip .wrap{grid-template-columns:repeat(2,1fr)} }
+
+section{padding:76px 0}
+.sec-head{max-width:62ch; margin-bottom:44px}
+.sec-head h2{font-size:clamp(26px,3.6vw,38px); margin-bottom:14px}
+.sec-head p{color:var(--ink-2); margin:0}
+
+/* problem cards */
+.grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+@media(max-width:860px){ .grid3{grid-template-columns:1fr} }
+.card{
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:26px;
+}
+.card h3{font-size:18px; margin-bottom:10px}
+.card p{color:var(--ink-2); font-size:15.5px; margin:0}
+.card .num{font-family:"Instrument Serif",Georgia,serif; font-size:24px; color:var(--accent-ink); display:block; margin-bottom:12px}
+
+/* services */
+.svc{display:grid; grid-template-columns:repeat(2,1fr); gap:20px}
+@media(max-width:860px){ .svc{grid-template-columns:1fr} }
+.svc .card ul{margin:12px 0 0; padding-left:18px; color:var(--ink-2); font-size:15.5px}
+.svc .card li{margin-bottom:6px}
+
+/* offer */
+.offer{
+  background:var(--surface); border:1px solid var(--line); border-radius:20px; overflow:hidden;
+  display:grid; grid-template-columns:1.25fr 1fr;
+}
+@media(max-width:860px){ .offer{grid-template-columns:1fr} }
+.offer-main{padding:40px}
+.offer-side{padding:40px; background:var(--accent-soft); border-left:1px solid var(--line)}
+@media(max-width:860px){ .offer-side{border-left:none; border-top:1px solid var(--line)} }
+.price{font-family:"Instrument Serif",Georgia,serif; font-size:46px; line-height:1; margin-bottom:4px}
+.plans{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:stretch}
+@media(max-width:900px){ .plans{grid-template-columns:1fr} }
+.plan{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:28px; display:flex; flex-direction:column}
+.plan.best{border-color:var(--accent); box-shadow:0 0 0 1px var(--accent)}
+.plan .kicker{font-size:12.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-3); margin-bottom:14px}
+.plan.best .kicker{color:var(--accent-ink)}
+.plan .amount{font-family:"Instrument Serif",Georgia,serif; font-size:38px; line-height:1; margin-bottom:2px}
+.plan .unit{font-size:14.5px; color:var(--ink-3); margin-bottom:16px}
+.plan h3{font-size:19px; margin-bottom:8px}
+.plan .desc{font-size:15.5px; color:var(--ink-2); margin-bottom:16px}
+.plan ul{list-style:none; padding:0; margin:0 0 20px}
+.plan li{display:flex; gap:9px; align-items:flex-start; font-size:15px; color:var(--ink-2); margin-bottom:9px}
+.plan li svg{flex:none; margin-top:4px; color:var(--accent-ink)}
+.plan .foot{margin-top:auto}
+.ribbon{display:inline-block; font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; background:var(--accent); color:var(--bg); padding:4px 10px; border-radius:999px; margin-bottom:12px}
+.extra{margin-top:22px; background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius); padding:24px 26px; display:grid; grid-template-columns:1fr 1fr; gap:26px}
+@media(max-width:900px){ .extra{grid-template-columns:1fr; gap:18px} }
+.extra h4{font-size:16px; margin:0 0 6px}
+.extra p{font-size:15px; color:var(--ink-2); margin:0}
+.price small{font-family:Inter,sans-serif; font-size:15px; color:var(--ink-2); font-weight:500}
+.checks{list-style:none; padding:0; margin:20px 0 0}
+.checks li{display:flex; gap:11px; align-items:flex-start; margin-bottom:11px; font-size:15.5px; color:var(--ink-2)}
+.checks svg{flex:none; margin-top:4px}
+
+/* method */
+.steps{display:grid; grid-template-columns:repeat(4,1fr); gap:20px; counter-reset:s}
+@media(max-width:860px){ .steps{grid-template-columns:1fr 1fr} }
+@media(max-width:520px){ .steps{grid-template-columns:1fr} }
+.step{border-top:2px solid var(--accent); padding-top:16px}
+.step b{display:block; font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--accent-ink); margin-bottom:8px}
+.step h3{font-size:17px; margin-bottom:8px}
+.step p{color:var(--ink-2); font-size:15px; margin:0}
+
+/* about */
+.about{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start}
+@media(max-width:860px){ .about{grid-template-columns:1fr; gap:28px} }
+.about-quote{
+  font-family:"Instrument Serif",Georgia,serif; font-size:clamp(22px,3vw,30px); line-height:1.35;
+  border-left:3px solid var(--accent); padding-left:22px; color:var(--ink);
+}
+.tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:22px}
+.tag{font-size:13.5px; padding:5px 12px; border:1px solid var(--line); border-radius:999px; color:var(--ink-2); background:var(--surface)}
+
+/* faq */
+details{border-bottom:1px solid var(--line); padding:18px 0}
+details summary{cursor:pointer; font-weight:600; font-size:17px; list-style:none; display:flex; justify-content:space-between; gap:16px}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+"; color:var(--accent-ink); font-weight:400; font-size:22px; line-height:1}
+details[open] summary::after{content:"–"}
+details p{color:var(--ink-2); margin:12px 0 0; font-size:16px; max-width:70ch}
+
+/* contact */
+.contact{background:var(--surface-2); border-top:1px solid var(--line)}
+.contact-box{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center}
+@media(max-width:860px){ .contact-box{grid-template-columns:1fr; gap:28px} }
+form{display:grid; gap:12px}
+label{font-size:14px; font-weight:600; color:var(--ink-2)}
+input,textarea,select{
+  width:100%; font-family:inherit; font-size:16px; padding:12px 14px; color:var(--ink);
+  background:var(--surface); border:1px solid var(--line); border-radius:10px;
+}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--accent); outline-offset:1px}
+textarea{min-height:110px; resize:vertical}
+.formnote{font-size:13.5px; color:var(--ink-3); margin:4px 0 0}
+
+footer{padding:36px 0; border-top:1px solid var(--line); font-size:14px; color:var(--ink-3)}
+.foot{display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">
+      <svg class="mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect x="1.5" y="1.5" width="29" height="29" rx="8" stroke="currentColor" stroke-width="2"/>
+        <path d="M8 21.5 L13 14.5 L18 18 L24.5 9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      ControllingHub
+    </a>
+    <nav class="navlinks">
+      <a href="#problema">Quando serve</a>
+      <a href="#servizi">Servizi</a>
+      <a href="#offerta">Formule</a>
+      <a href="#metodo">Metodo</a>
+      <a href="#chi">Chi siamo</a>
+      <a href="#faq">Domande</a>
+    </nav>
+    <a class="btn" href="#contatti">Parliamone</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Controllo di gestione per PMI</span>
+    <h1 class="serif">Sai quanto fatturi. Sai anche dove guadagni davvero?</h1>
+    <p class="lede">Molte PMI arrivano al bilancio a maggio e scoprono a posteriori com'è andato l'anno. ControllingHub costruisce il controllo di gestione che serve per saperlo ogni mese, senza assumere un controller a tempo pieno.</p>
+    <div class="cta-row">
+      <a class="btn" href="#offerta">Vedi le formule</a>
+      <a class="btn btn-ghost" href="#contatti">Prenota una call conoscitiva</a>
+    </div>
+    <p class="cta-note" style="margin-top:18px">Prima call gratuita, 30 minuti, nessun impegno.</p>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <div class="stat"><b>Industria</b><span>manifattura e distribuzione, contabilità analitica e costo prodotto</span></div>
+    <div class="stat"><b>Gruppi</b><span>più società e filiali estere, consolidamento e reporting alla proprietà</span></div>
+    <div class="stat"><b>Migrazioni ERP</b><span>dati, quadrature e reporting nel passaggio al nuovo gestionale</span></div>
+    <div class="stat"><b>Piccole realtà</b><span>ristorazione, eventi e servizi, dove gli strumenti devono restare leggeri</span></div>
+  </div>
+</div>
+
+<section id="problema">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="serif">Riconosci una di queste situazioni?</h2>
+      <p>Non sono problemi contabili. Sono problemi di informazione: i dati ci sono già, ma nessuno li trasforma in qualcosa su cui decidere.</p>
+    </div>
+    <div class="grid3">
+      <div class="card"><span class="num">01</span><h3>Il margine è un mistero</h3><p>Sai il fatturato per cliente, ma non quanto ti resta in tasca per prodotto, commessa o punto vendita. Le decisioni di prezzo si prendono a sensazione.</p></div>
+      <div class="card"><span class="num">02</span><h3>Il budget non esiste, o non si usa</h3><p>Se un budget c'è, è un file fatto a gennaio che nessuno confronta più con il consuntivo. Gli scostamenti si scoprono a fine anno.</p></div>
+      <div class="card"><span class="num">03</span><h3>Il magazzino è un buco nero</h3><p>Valore a bilancio alto, rotazione ignota, slow moving mai calcolato. E ogni inventario riserva sorprese.</p></div>
+      <div class="card"><span class="num">04</span><h3>Report fatti a mano ogni mese</h3><p>Qualcuno in amministrazione passa tre giorni a incollare celle. Ogni mese. Con il rischio di errore che ne consegue.</p></div>
+      <div class="card"><span class="num">05</span><h3>Il gestionale nuovo non dà i numeri</h3><p>Avete cambiato ERP e il reporting è peggiorato, non migliorato. I dati sono dentro, ma non escono nella forma che serve.</p></div>
+      <div class="card"><span class="num">06</span><h3>La banca o il socio chiedono dati</h3><p>Servono numeri gestionali affidabili per un affidamento, un investitore o una due diligence, e in azienda nessuno li produce.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="servizi" style="background:var(--surface-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="serif">Cosa facciamo</h2>
+      <p>Quattro aree. Di solito si parte da una e si estende quando il valore è evidente.</p>
+    </div>
+    <div class="svc">
+      <div class="card">
+        <h3>Controllo di gestione e marginalità</h3>
+        <ul>
+          <li>Conto economico gestionale mensile, per business unit o linea</li>
+          <li>Analisi di marginalità per prodotto, cliente, commessa</li>
+          <li>Costo prodotto: distinte base, cicli, costo orario, make or buy</li>
+          <li>KPI direzionali e cruscotto per la proprietà</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Budget e forecast</h3>
+        <ul>
+          <li>Modello di budget costruito sui vostri dati, non su un template</li>
+          <li>Forecast rolling e analisi degli scostamenti</li>
+          <li>Budget del costo del personale e dei costi generali</li>
+          <li>Business plan e business case per investimenti</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Reporting e business intelligence</h3>
+        <ul>
+          <li>Automazione dei report che oggi fate a mano</li>
+          <li>Power BI, Power Query, estrazioni dirette dal database</li>
+          <li>Strumenti AI per analizzare grandi estrazioni in poche ore</li>
+          <li>Cruscotti vendite, acquisti, magazzino, working capital</li>
+          <li>Riconciliazione tra dati industriali e conto economico</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Magazzino e dati ERP</h3>
+        <ul>
+          <li>Analisi rotazione, slow moving e svalutazione</li>
+          <li>Verifica valorizzazione e medio ponderato</li>
+          <li>Supporto a migrazione gestionale e bonifica anagrafiche</li>
+          <li>Controlli di quadratura tra moduli e contabilità</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="offerta">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="serif">Formule di collaborazione</h2>
+      <p>Si comincia quasi sempre dal check-up: costa poco, dura poche settimane e vi dice con numeri alla mano se e dove conviene intervenire. Tutti gli importi sono al netto di IVA.</p>
+    </div>
+
+    <div class="plans">
+
+      <div class="plan">
+        <div class="kicker">Per cominciare</div>
+        <div class="amount">800 €</div>
+        <div class="unit">una tantum &middot; 2–3 settimane</div>
+        <h3>Check-up</h3>
+        <p class="desc">Una diagnosi del vostro controllo di gestione: cosa c'è, cosa manca, cosa conviene fare per primo.</p>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Analisi dei dati e degli strumenti già in uso</span></li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Relazione scritta con le tre priorità e la stima dell'impegno</span></li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Due incontri, apertura e restituzione</span></li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>L'importo viene scalato</strong> se proseguite con un progetto</span></li>
+        </ul>
+        <div class="foot"><a class="btn btn-ghost" href="#contatti">Richiedi il check-up</a></div>
+      </div>
+
+      <div class="plan best">
+        <span class="ribbon">Più scelta</span>
+        <div class="kicker">Il percorso completo</div>
+        <div class="amount">1.500 €</div>
+        <div class="unit">al mese &middot; 4 mesi &middot; 30 ore mensili</div>
+        <h3>Avvio del controllo di gestione</h3>
+        <p class="desc">Da nessun dato gestionale a un sistema che gira da solo, con chi lo userà messo in condizione di usarlo.</p>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Conto economico gestionale mensile funzionante</span></li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Primi indicatori di marginalità sulle aree che contano</span></li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Report ricorrenti automatizzati</span></li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Strumenti documentati, che restano vostri</span></li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Nessun vincolo oltre i quattro mesi</span></li>
+        </ul>
+        <div class="foot"><a class="btn" href="#contatti">Parliamone</a></div>
+      </div>
+
+      <div class="plan">
+        <div class="kicker">Un obiettivo solo</div>
+        <div class="amount">da 1.800 €</div>
+        <div class="unit">prezzo chiuso &middot; circa un mese</div>
+        <h3>Progetto mirato</h3>
+        <p class="desc">Quando il problema è già circoscritto e serve risolverlo, non impostare tutto da capo.</p>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Costo prodotto e analisi di marginalità</span></li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Budget o forecast dell'anno</span></li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Analisi magazzino, rotazione e slow moving</span></li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Automazione di un report fatto a mano</span></li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Reporting da rimettere in piedi dopo un cambio gestionale</span></li>
+        </ul>
+        <div class="foot"><a class="btn btn-ghost" href="#contatti">Descrivi il progetto</a></div>
+      </div>
+
+    </div>
+
+    <div class="extra">
+      <div>
+        <h4>Presidio continuativo &mdash; 700 € al mese</h4>
+        <p>Dopo il progetto, otto ore al mese per tenere vivo il sistema: chiusura gestionale, analisi degli scostamenti, una call di lettura dei numeri con la proprietà. Si disdice con un mese di preavviso.</p>
+      </div>
+      <div>
+        <h4>Attività fuori pacchetto &mdash; 80 € l'ora</h4>
+        <p>Per richieste puntuali o perimetri non ancora definiti. Se l'attività diventa ricorrente, conviene a entrambi ricondurla a una delle formule qui sopra.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="metodo" style="background:var(--surface-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="serif">Come si lavora</h2>
+      <p>Niente presentazioni istituzionali. Si entra nei dati dalla prima settimana.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><b>Settimana 1</b><h3>Fotografia</h3><p>Guardiamo insieme cosa esiste già: gestionale, file, report, procedure. E cosa manca per rispondere alle domande della proprietà.</p></div>
+      <div class="step"><b>Settimane 2–4</b><h3>Primo numero utile</h3><p>Si sceglie la domanda più urgente e le si dà una risposta misurata. Serve a verificare la qualità dei dati prima di costruirci sopra.</p></div>
+      <div class="step"><b>Mesi 2–3</b><h3>Costruzione</h3><p>Conto economico gestionale, marginalità, automazione dei report ricorrenti. Ogni strumento viene consegnato funzionante e spiegato.</p></div>
+      <div class="step"><b>Mese 4</b><h3>Passaggio di mano</h3><p>Chi in azienda dovrà usarli impara a farlo. L'obiettivo è che possiate proseguire anche senza di noi.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="chi">
+  <div class="wrap">
+    <div class="about">
+      <div>
+        <div class="sec-head" style="margin-bottom:24px"><h2 class="serif">Chi siamo</h2></div>
+        <p class="about-quote">Una struttura snella e senior. Chi entra nei vostri numeri è chi ne risponde davanti a voi: nessun profilo junior a rotazione, nessun passaggio di mano a metà progetto.</p>
+      </div>
+      <div>
+        <p style="color:var(--ink-2)">Siamo specialisti di controllo di gestione e portiamo in azienda un'esperienza ventennale maturata nel controllo industriale: contabilità analitica, costo prodotto, magazzino, consolidamento di gruppi con filiali estere, reporting verso la proprietà e gli investitori.</p>
+        <p style="color:var(--ink-2)">Facciamo il mestiere del controller interno, dall'esterno. Costruiamo il controllo di gestione dove non esiste e lo rimettiamo in ordine dove esiste ma nessuno lo usa. Seguiamo le aziende nei cambi di gestionale, dalla migrazione dei dati alla ricostruzione del reporting che dopo il go-live smette di funzionare.</p>
+        <p style="color:var(--ink-2)">Lo stesso impianto, alleggerito, lo portiamo in realtà molto più piccole: ristorazione, eventi, servizi. Lì il vincolo non è la complessità dei dati ma il tempo di chi dovrà usarli, e lo strumento va costruito di conseguenza.</p>
+        <p style="color:var(--ink-2); margin-bottom:0">Una parte consistente del nostro lavoro passa oggi dagli strumenti di intelligenza artificiale, usati dove fanno la differenza: leggiamo in poche ore estrazioni contabili da decine di migliaia di righe, scriviamo query e automazioni, individuiamo anomalie e quadrature che a mano richiederebbero giornate.</p>
+        <div class="tags">
+          <span class="tag">Controllo di gestione</span>
+          <span class="tag">Budget &amp; forecast</span>
+          <span class="tag">Costo prodotto</span>
+          <span class="tag">Power BI</span>
+          <span class="tag">Power Query &amp; VBA</span>
+          <span class="tag">SQL e database</span>
+          <span class="tag">Business Central</span>
+          <span class="tag">Consolidato</span>
+          <span class="tag">Strumenti AI per l'analisi dati</span>
+          <span class="tag">Migrazione gestionale</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="background:var(--surface-2); border-top:1px solid var(--line)">
+  <div class="wrap" style="max-width:820px">
+    <div class="sec-head"><h2 class="serif">Domande frequenti</h2></div>
+    <details><summary>Siamo piccoli, ha senso per noi?</summary><p>Sotto il milione di fatturato spesso basta molto meno di 30 ore al mese: si può partire con un perimetro ridotto e un impegno proporzionato. La domanda giusta non è quanto fatturate, ma se oggi sapete dove state guadagnando.</p></details>
+    <details><summary>Sostituite il commercialista?</summary><p>No, e non è nemmeno l'obiettivo. Bilancio civilistico, principi contabili, adempimenti e materia fiscale restano al vostro consulente: non sono il nostro campo e non ce ne occupiamo. Noi lavoriamo sul lato gestionale, cioè su ciò che serve a voi per decidere. I due piani si parlano, e il confronto con il commercialista è benvenuto.</p></details>
+    <details><summary>Usate l'intelligenza artificiale?</summary><p>Sì, dove accorcia i tempi senza togliere controllo: analisi di estrazioni contabili molto grandi, scrittura di query e automazioni, ricerca di anomalie e quadrature. Ogni numero che vi consegniamo resta comunque verificato e riconciliato a mano con le vostre fonti. L'AI accelera il lavoro, non firma le conclusioni.</p></details>
+    <details><summary>Come lavorate, in sede o da remoto?</summary><p>Prevalentemente da remoto, che è ciò che tiene basso il costo. Gli incontri in sede si concentrano nella fase iniziale e nei passaggi chiave. Per le aziende della provincia di Brescia la presenza è più facile da organizzare.</p></details>
+    <details><summary>Dobbiamo comprare un software?</summary><p>Quasi mai. Nella maggior parte dei casi si lavora con quello che avete già: il gestionale, Excel e gli strumenti Microsoft che avete in licenza. Se serve altro lo si dice prima, con i costi in chiaro.</p></details>
+    <details><summary>I nostri dati sono riservati.</summary><p>Si firma un accordo di riservatezza prima di ricevere qualsiasi file. I dati restano sui vostri sistemi ogni volta che è tecnicamente possibile.</p></details>
+    <details><summary>Cosa succede dopo i quattro mesi?</summary><p>Decidete voi. C'è chi prosegue con un impegno mensile ridotto per tenere vivo il sistema, chi lo porta avanti internamente, chi apre un nuovo progetto su un'altra area. Nessun rinnovo automatico.</p></details>
+  </div>
+</section>
+
+<section class="contact" id="contatti">
+  <div class="wrap">
+    <div class="contact-box">
+      <div>
+        <h2 class="serif" style="font-size:clamp(26px,3.6vw,38px); margin-bottom:14px">Partiamo da una call</h2>
+        <p style="color:var(--ink-2)">Trenta minuti, gratuiti, senza presentazioni commerciali. Raccontate la situazione e vi diciamo con franchezza se possiamo essere utili — e se no, ve lo diciamo lo stesso.</p>
+        <p style="color:var(--ink-2); margin-bottom:0">Compilate il modulo qui a fianco: rispondiamo entro un giorno lavorativo.</p>
+      </div>
+      <div>
+        <div id="err-box" style="display:none; background:var(--surface); border:1px solid var(--amber); border-left:4px solid var(--amber); border-radius:var(--radius); padding:18px; margin-bottom:14px">
+          <p style="margin:0; font-size:15.5px; color:var(--ink-2)">Invio non riuscito. Riprovate tra poco, oppure scriveteci dal vostro programma di posta indicando azienda e recapito.</p>
+        </div>
+        <div id="ok-box" style="display:none; background:var(--accent-soft); border:1px solid var(--accent); border-radius:var(--radius); padding:24px">
+          <h3 style="font-size:19px; margin-bottom:8px">Richiesta ricevuta</h3>
+          <p style="color:var(--ink-2); margin:0">Grazie. Vi rispondiamo entro un giorno lavorativo all'indirizzo che avete indicato.</p>
+        </div>
+        <form id='f' method='POST' name='contatti' data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="contatti">
+          <p style="display:none"><label>Non compilare questo campo: <input name="bot-field"></label></p>
+          <div><label for="az">Azienda</label><input id="az" name="azienda" type="text" autocomplete="organization" required></div>
+          <div><label for="nome">Nome e ruolo</label><input id="nome" name="nome" type="text" autocomplete="name" required></div>
+          <div><label for="mail">Email</label><input id="mail" name="email" type="email" autocomplete="email" required></div>
+          <div><label for="tema">Da dove partireste</label>
+            <select id="tema" name="area">
+              <option>Marginalità e costo prodotto</option>
+              <option>Budget e forecast</option>
+              <option>Reporting e automazione</option>
+              <option>Magazzino</option>
+              <option>Migrazione gestionale</option>
+              <option>Non so ancora</option>
+            </select>
+          </div>
+          <div><label for="msg">Due righe sulla situazione</label><textarea id="msg" name="messaggio"></textarea></div>
+          <button class="btn" type="submit" style="justify-self:start">Invia richiesta</button>
+          <p class="formnote">I dati inviati servono solo a ricontattarvi e non vengono usati per altro.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>ControllingHub — controllo di gestione per PMI</span>
+    <span><a href="#contatti" style="text-decoration:none">Contatti</a></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var form = document.getElementById('f');
+  var box  = document.getElementById('ok-box');
+  var err  = document.getElementById('err-box');
+  if (!form) return;
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+
+    var btn = form.querySelector('button[type=submit]');
+    var testo = btn ? btn.textContent : '';
+    if (btn) { btn.disabled = true; btn.textContent = 'Invio in corso...'; }
+    if (err) err.style.display = 'none';
+
+    var dati = new URLSearchParams(new FormData(form)).toString();
+
+    fetch(window.location.pathname, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: dati
+    })
+    .then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      form.style.display = 'none';
+      if (box) box.style.display = 'block';
+    })
+    .catch(function () {
+      if (btn) { btn.disabled = false; btn.textContent = testo; }
+      if (err) err.style.display = 'block';
+    });
+  });
+})();
+</script>
+</body>
+</html>
