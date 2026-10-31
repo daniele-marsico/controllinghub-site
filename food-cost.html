@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Food cost: come calcolarlo in 5 passi (foglio Excel gratuito) — ControllingHub</title>
+<meta name="description" content="Come calcolare il food cost di un piatto: prezzo in fattura, resa, porzioni, IVA e margine in euro. Con calcolatore Excel gratuito da scaricare.">
+<link rel="canonical" href="https://controllinghub.netlify.app/food-cost.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FBFAF8; --surface:#FFFFFF; --surface-2:#F3F1ED;
+  --ink:#14181F; --ink-2:#4A5260; --ink-3:#7C8492;
+  --line:#E3DFD8; --accent:#1B4D3E; --accent-soft:#E8F0EC; --accent-ink:#1B4D3E;
+  --amber:#B4762A;
+  --radius:14px;
+  --maxw:1080px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1116; --surface:#161B22; --surface-2:#1C222B;
+    --ink:#EDEFF2; --ink-2:#AEB6C2; --ink-3:#7F8896;
+    --line:#262D38; --accent:#7FD6AE; --accent-soft:#16241E; --accent-ink:#7FD6AE;
+    --amber:#E0A458;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1116; --surface:#161B22; --surface-2:#1C222B;
+  --ink:#EDEFF2; --ink-2:#AEB6C2; --ink-3:#7F8896;
+  --line:#262D38; --accent:#7FD6AE; --accent-soft:#16241E; --accent-ink:#7FD6AE;
+  --amber:#E0A458;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:Inter, "Helvetica Neue", Arial, sans-serif;
+  font-size:17px; line-height:1.62; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px}
+h1,h2,h3{line-height:1.15; margin:0; letter-spacing:-0.02em}
+.serif{font-family:"Instrument Serif", Georgia, serif; font-weight:400; letter-spacing:-0.01em}
+p{margin:0 0 1em}
+a{color:inherit}
+
+/* header */
+header{
+  position:sticky; top:0; z-index:50; background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+}
+.nav{display:flex; align-items:center; justify-content:space-between; height:66px}
+.logo{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:-0.03em; font-size:19px; text-decoration:none}
+.mark{width:26px;height:26px;flex:none}
+.navlinks{display:flex; gap:26px; font-size:15px; color:var(--ink-2)}
+.navlinks a{text-decoration:none}
+.navlinks a:hover{color:var(--ink)}
+@media(max-width:760px){ .navlinks{display:none} }
+.btn{
+  display:inline-block; background:var(--accent); color:var(--bg); text-decoration:none;
+  padding:11px 20px; border-radius:999px; font-weight:600; font-size:15px; border:none; cursor:pointer;
+  transition:transform .15s ease, opacity .15s ease;
+}
+.btn:hover{transform:translateY(-1px); opacity:.92}
+.btn-ghost{background:transparent; color:var(--ink); border:1px solid var(--line)}
+.nav-right{display:flex; align-items:center; gap:14px}
+.lang{display:inline-flex; border:1px solid var(--line); border-radius:999px; padding:3px; font-size:13px; font-weight:600; background:var(--surface)}
+.lang a{padding:4px 10px; border-radius:999px; text-decoration:none; color:var(--ink-3); line-height:1.3}
+.lang a:hover{color:var(--ink)}
+.lang a[aria-current="page"]{background:var(--ink); color:var(--bg)}
+@media(max-width:440px){ .nav-right .btn{display:none} }
+
+/* ai */
+.ai-band{background:var(--accent-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.ai-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+@media(max-width:860px){ .ai-grid{grid-template-columns:1fr} }
+.ai-grid .card ul{margin:12px 0 0; padding-left:18px; color:var(--ink-2); font-size:15.5px}
+.ai-grid .card li{margin-bottom:6px}
+.ai-note{margin-top:22px; font-size:15px; color:var(--ink-2); max-width:78ch}
+
+/* hero */
+.hero{padding:86px 0 64px}
+.eyebrow{
+  display:inline-block; font-size:13px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--accent-ink); background:var(--accent-soft); padding:6px 13px; border-radius:999px; margin-bottom:26px;
+}
+.hero h1{font-size:clamp(34px, 5.4vw, 60px); max-width:16ch; margin-bottom:22px}
+.hero .lede{font-size:clamp(17px,2.1vw,20px); color:var(--ink-2); max-width:58ch; margin-bottom:32px}
+.cta-row{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
+.cta-note{font-size:14px; color:var(--ink-3)}
+
+/* strip */
+.strip{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--surface-2)}
+.strip .wrap{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; padding:0 24px}
+.stat{padding:28px 10px 26px}
+.stat b{display:block; font-family:"Instrument Serif",Georgia,serif; font-size:26px; line-height:1.1; margin-bottom:8px; color:var(--accent-ink)}
+.stat span{font-size:14px; color:var(--ink-2)}
+@media(max-width:760px){ .strip .wrap{grid-template-columns:repeat(2,1fr)} }
+
+section{padding:76px 0}
+.sec-head{max-width:62ch; margin-bottom:44px}
+.sec-head h2{font-size:clamp(26px,3.6vw,38px); margin-bottom:14px}
+.sec-head p{color:var(--ink-2); margin:0}
+
+/* problem cards */
+.grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+@media(max-width:860px){ .grid3{grid-template-columns:1fr} }
+.card{
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:26px;
+}
+.card h3{font-size:18px; margin-bottom:10px}
+.card p{color:var(--ink-2); font-size:15.5px; margin:0}
+.card .num{font-family:"Instrument Serif",Georgia,serif; font-size:24px; color:var(--accent-ink); display:block; margin-bottom:12px}
+
+/* services */
+.svc{display:grid; grid-template-columns:repeat(2,1fr); gap:20px}
+@media(max-width:860px){ .svc{grid-template-columns:1fr} }
+.svc .card ul{margin:12px 0 0; padding-left:18px; color:var(--ink-2); font-size:15.5px}
+.svc .card li{margin-bottom:6px}
+
+/* offer */
+.offer{
+  background:var(--surface); border:1px solid var(--line); border-radius:20px; overflow:hidden;
+  display:grid; grid-template-columns:1.25fr 1fr;
+}
+@media(max-width:860px){ .offer{grid-template-columns:1fr} }
+.offer-main{padding:40px}
+.offer-side{padding:40px; background:var(--accent-soft); border-left:1px solid var(--line)}
+@media(max-width:860px){ .offer-side{border-left:none; border-top:1px solid var(--line)} }
+.price{font-family:"Instrument Serif",Georgia,serif; font-size:46px; line-height:1; margin-bottom:4px}
+.plans{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:stretch}
+@media(max-width:900px){ .plans{grid-template-columns:1fr} }
+.plan{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:28px; display:flex; flex-direction:column}
+.plan.best{border-color:var(--accent); box-shadow:0 0 0 1px var(--accent)}
+.plan .kicker{font-size:12.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-3); margin-bottom:14px}
+.plan.best .kicker{color:var(--accent-ink)}
+.plan .amount{font-family:"Instrument Serif",Georgia,serif; font-size:38px; line-height:1; margin-bottom:2px}
+.plan .unit{font-size:14.5px; color:var(--ink-3); margin-bottom:16px}
+.plan h3{font-size:19px; margin-bottom:8px}
+.plan .desc{font-size:15.5px; color:var(--ink-2); margin-bottom:16px}
+.plan ul{list-style:none; padding:0; margin:0 0 20px}
+.plan li{display:flex; gap:9px; align-items:flex-start; font-size:15px; color:var(--ink-2); margin-bottom:9px}
+.plan li svg{flex:none; margin-top:4px; color:var(--accent-ink)}
+.plan .foot{margin-top:auto}
+.ribbon{display:inline-block; font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; background:var(--accent); color:var(--bg); padding:4px 10px; border-radius:999px; margin-bottom:12px}
+.extra{margin-top:22px; background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius); padding:24px 26px; display:grid; grid-template-columns:1fr 1fr; gap:26px}
+@media(max-width:900px){ .extra{grid-template-columns:1fr; gap:18px} }
+.extra h4{font-size:16px; margin:0 0 6px}
+.extra p{font-size:15px; color:var(--ink-2); margin:0}
+.price small{font-family:Inter,sans-serif; font-size:15px; color:var(--ink-2); font-weight:500}
+.checks{list-style:none; padding:0; margin:20px 0 0}
+.checks li{display:flex; gap:11px; align-items:flex-start; margin-bottom:11px; font-size:15.5px; color:var(--ink-2)}
+.checks svg{flex:none; margin-top:4px}
+
+/* method */
+.steps{display:grid; grid-template-columns:repeat(4,1fr); gap:20px; counter-reset:s}
+@media(max-width:860px){ .steps{grid-template-columns:1fr 1fr} }
+@media(max-width:520px){ .steps{grid-template-columns:1fr} }
+.step{border-top:2px solid var(--accent); padding-top:16px}
+.step b{display:block; font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--accent-ink); margin-bottom:8px}
+.step h3{font-size:17px; margin-bottom:8px}
+.step p{color:var(--ink-2); font-size:15px; margin:0}
+
+/* about */
+.about{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start}
+@media(max-width:860px){ .about{grid-template-columns:1fr; gap:28px} }
+.about-quote{
+  font-family:"Instrument Serif",Georgia,serif; font-size:clamp(22px,3vw,30px); line-height:1.35;
+  border-left:3px solid var(--accent); padding-left:22px; color:var(--ink);
+}
+.tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:22px}
+.tag{font-size:13.5px; padding:5px 12px; border:1px solid var(--line); border-radius:999px; color:var(--ink-2); background:var(--surface)}
+
+/* faq */
+details{border-bottom:1px solid var(--line); padding:18px 0}
+details summary{cursor:pointer; font-weight:600; font-size:17px; list-style:none; display:flex; justify-content:space-between; gap:16px}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+"; color:var(--accent-ink); font-weight:400; font-size:22px; line-height:1}
+details[open] summary::after{content:"–"}
+details p{color:var(--ink-2); margin:12px 0 0; font-size:16px; max-width:70ch}
+
+/* contact */
+.contact{background:var(--surface-2); border-top:1px solid var(--line)}
+.contact-box{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center}
+@media(max-width:860px){ .contact-box{grid-template-columns:1fr; gap:28px} }
+form{display:grid; gap:12px}
+label{font-size:14px; font-weight:600; color:var(--ink-2)}
+input,textarea,select{
+  width:100%; font-family:inherit; font-size:16px; padding:12px 14px; color:var(--ink);
+  background:var(--surface); border:1px solid var(--line); border-radius:10px;
+}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--accent); outline-offset:1px}
+textarea{min-height:110px; resize:vertical}
+.formnote{font-size:13.5px; color:var(--ink-3); margin:4px 0 0}
+
+footer{padding:36px 0; border-top:1px solid var(--line); font-size:14px; color:var(--ink-3)}
+.foot{display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap}
+</style>
+<style>
+.article{max-width:740px;margin:0 auto;padding:56px 20px 72px}
+.article h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(34px,5vw,52px);line-height:1.08;letter-spacing:-0.01em;margin:10px 0 18px}
+.article h2{font-size:21px;margin:40px 0 10px;letter-spacing:-0.01em}
+.article p,.article li{font-size:17px;line-height:1.65;color:var(--ink-2)}
+.article strong{color:var(--ink)}
+.kicker{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);font-weight:600}
+.lead{font-size:19px!important}
+.dl{background:var(--accent-soft);border:1px solid var(--line);border-radius:var(--radius);padding:24px;margin:28px 0}
+.dl p{margin:0 0 14px}
+.tbl{width:100%;border-collapse:collapse;margin:14px 0;font-size:15px}
+.tbl th,.tbl td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:right;color:var(--ink)}
+.tbl th:first-child,.tbl td:first-child{text-align:left}
+.tbl th{font-weight:600;color:var(--ink-2);font-size:13px}
+.formula{font-family:ui-monospace,Menlo,Consolas,monospace;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:15px;color:var(--ink);overflow-x:auto}
+.cta{border-top:1px solid var(--line);margin-top:48px;padding-top:28px}
+@media(max-width:560px){.tbl{font-size:13px}.tbl th,.tbl td{padding:8px 4px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="/">
+      <svg class="mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect x="1.5" y="1.5" width="29" height="29" rx="8" stroke="currentColor" stroke-width="2"/>
+        <path d="M8 21.5 L13 14.5 L18 18 L24.5 9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      ControllingHub
+    </a>
+    <nav class="navlinks">
+      <a href="/#problema">Quando serve</a>
+      <a href="/#servizi">Servizi</a>
+      <a href="/#ai">AI</a>
+      <a href="/#offerta">Formule</a>
+      <a href="/#metodo">Metodo</a>
+      <a href="/#chi">Chi siamo</a>
+      <a href="/#faq">Domande</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn" href="/#contatti">Parliamone</a>
+      <nav class="lang" aria-label="Lingua / Language">
+        <a href="/" hreflang="it" lang="it">IT</a>
+        <a href="/en/" hreflang="en" lang="en">EN</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<article class="article">
+  <div class="kicker">Ristorazione · guida pratica</div>
+  <h1>Food cost: come calcolarlo in 5 passi</h1>
+  <p class="lead">Sapere quanto incassi è facile. Sapere quanto ti resta su ogni piatto no. Ecco il metodo che uso con i ristoranti, con un foglio Excel gratuito che fa i conti al posto tuo.</p>
+
+  <div class="dl">
+    <p><strong>Calcolatore food cost (Excel, gratuito)</strong><br>Inserisci ingredienti, ricette e prezzi di menu: food cost %, margine in euro e piatti da rivedere si calcolano da soli. Nessuna registrazione.</p>
+    <a class="btn" href="/risorse/calcolatore-food-cost-controllinghub.xlsx" download>Scarica il foglio</a>
+  </div>
+
+  <h2>1. Parti dal prezzo vero, quello in fattura</h2>
+  <p>Usa il prezzo d'acquisto <strong>IVA esclusa</strong>, preso dall'ultima fattura del fornitore, non dal listino o dalla memoria. Con i rincari degli ultimi anni, un prezzo vecchio di sei mesi può falsare tutto il calcolo.</p>
+
+  <h2>2. Considera la resa</h2>
+  <p>Un chilo di controfiletto non diventa un chilo nel piatto: tra pulizia e cottura ne usi forse l'85%. Lo stesso vale per verdure ed erbe. Il costo di ciò che usi davvero è:</p>
+  <p class="formula">costo netto = prezzo d'acquisto ÷ resa</p>
+  <p>Esempio: manzo a 28 €/kg con resa 85% costa in realtà 32,94 €/kg.</p>
+
+  <h2>3. Pesa le porzioni, non stimarle</h2>
+  <p>Scrivi per ogni piatto gli ingredienti e la quantità per una porzione, pesata almeno una volta in cucina. Il costo del piatto è la somma di quantità × costo netto. È il passo che più spesso riserva sorprese: un'abbondanza di 30 grammi, ripetuta su centinaia di coperti, è un costo importante.</p>
+
+  <h2>4. Togli l'IVA dal prezzo di menu</h2>
+  <p>Il cliente paga IVA inclusa, ma quell'IVA non è tua. Per un confronto corretto dividi il prezzo di menu per 1,10 (IVA al 10% sulla somministrazione).</p>
+  <p class="formula">food cost % = costo ingredienti ÷ prezzo di menu netto</p>
+
+  <h2>5. Guarda anche il margine in euro</h2>
+  <p>Ecco tre piatti di esempio (prezzi indicativi, gli stessi che trovi nel foglio):</p>
+  <table class="tbl">
+    <tr><th>Piatto</th><th>Prezzo menu</th><th>Costo ingredienti</th><th>Food cost</th><th>Margine a porzione</th></tr>
+    <tr><td>Pizza margherita</td><td>8,00 €</td><td>1,34 €</td><td>18%</td><td>5,94 €</td></tr>
+    <tr><td>Spaghetti alle vongole</td><td>16,00 €</td><td>3,53 €</td><td>24%</td><td>11,02 €</td></tr>
+    <tr><td>Tagliata rucola e grana</td><td>22,00 €</td><td>9,22 €</td><td>46%</td><td>10,78 €</td></tr>
+  </table>
+  <p>La tagliata ha un food cost alto, ma lascia quasi il doppio della margherita in euro. Non va tolta dal menu per forza: forse va rivista la porzione o il prezzo di qualche euro. La percentuale ti dice dove guardare, il margine in euro ti dice cosa conviene vendere.</p>
+
+  <h2>E dopo?</h2>
+  <p>Il food cost misura solo le materie prime. Il passo successivo è il <strong>full cost</strong>: personale, affitto ed energia per coperto, e il confronto mese per mese tra quanto dovresti aver speso e quanto hai comprato davvero. Con la fatturazione elettronica i dati dei fornitori sono già tutti disponibili e il lavoro si può automatizzare in buona parte.</p>
+
+  <div class="cta">
+    <p><strong>Vuoi farlo sul tuo locale?</strong> Con il check-up ControllingHub calcolo il food cost dei piatti principali partendo dalle tue fatture, l'incidenza del personale per turno e ti lascio un cruscotto mensile semplice da aggiornare. Prezzo fisso, da remoto.</p>
+    <a class="btn" href="/#contatti">Scrivimi</a>
+  </div>
+</article>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>ControllingHub — controllo di gestione per PMI</span>
+    <span><a href="mailto:controllinghubitaly@gmail.com" style="text-decoration:none">controllinghubitaly@gmail.com</a> &middot; <a href="/" style="text-decoration:none">Home</a></span>
+  </div>
+</footer>
+</body>
+</html>
