@@ -1,6 +1,6 @@
 # ControllingHub – website
 
-Source of [controllinghub.netlify.app](https://controllinghub.netlify.app): management control, budgeting, reporting and BI for small and medium-sized companies.
+Source of [controllinghub.com](https://controllinghub.com): management control, budgeting, reporting and BI for small and medium-sized companies.
 
 - Single static page (`index.html`): HTML + CSS, no build step, no framework
 - Light / dark theme via `prefers-color-scheme`
