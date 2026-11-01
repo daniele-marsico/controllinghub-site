@@ -513,9 +513,10 @@ footer{padding:36px 0; border-top:1px solid var(--line); font-size:14px; color:v
           <h3 style="font-size:19px; margin-bottom:8px">Richiesta ricevuta</h3>
           <p style="color:var(--ink-2); margin:0">Grazie. Vi rispondiamo entro un giorno lavorativo all'indirizzo che avete indicato.</p>
         </div>
-        <form id='f' method='POST' name='contatti' data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="contatti">
-          <p style="display:none"><label>Non compilare questo campo: <input name="bot-field"></label></p>
+        <form id='f' method='POST' action='https://formsubmit.co/controllinghubitaly@gmail.com'>
+          <input type="hidden" name="_subject" value="Nuova richiesta dal sito ControllingHub">
+          <input type="hidden" name="_template" value="table">
+          <p style="display:none"><label>Non compilare questo campo: <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
           <div><label for="az">Azienda</label><input id="az" name="azienda" type="text" autocomplete="organization" required></div>
           <div><label for="nome">Nome e ruolo</label><input id="nome" name="nome" type="text" autocomplete="name" required></div>
           <div><label for="mail">Email</label><input id="mail" name="email" type="email" autocomplete="email" required></div>
@@ -564,15 +565,16 @@ footer{padding:36px 0; border-top:1px solid var(--line); font-size:14px; color:v
     if (btn) { btn.disabled = true; btn.textContent = 'Invio in corso...'; }
     if (err) err.style.display = 'none';
 
-    var dati = new URLSearchParams(new FormData(form)).toString();
+    var dati = Object.fromEntries(new FormData(form));
 
-    fetch(window.location.pathname, {
+    fetch('https://formsubmit.co/ajax/controllinghubitaly@gmail.com', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: dati
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(dati)
     })
-    .then(function (r) {
-      if (!r.ok) throw new Error(r.status);
+    .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+    .then(function (res) {
+      if (!res.ok || String(res.j.success) !== 'true') throw new Error(res.j.message || 'errore');
       form.style.display = 'none';
       if (box) box.style.display = 'block';
     })
