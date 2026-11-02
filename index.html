@@ -503,19 +503,18 @@ footer{padding:36px 0; border-top:1px solid var(--line); font-size:14px; color:v
         <h2 class="serif" style="font-size:clamp(26px,3.6vw,38px); margin-bottom:14px">Partiamo da una call</h2>
         <p style="color:var(--ink-2)">Trenta minuti, gratuiti, senza presentazioni commerciali. Raccontate la situazione e vi diciamo con franchezza se possiamo essere utili — e se no, ve lo diciamo lo stesso.</p>
         <p style="color:var(--ink-2)">Compilate il modulo qui a fianco: rispondiamo entro un giorno lavorativo.</p>
-        <p style="color:var(--ink-2); margin-bottom:0">Preferite l'email? Scriveteci a <a href="mailto:controllinghubitaly@gmail.com" style="color:var(--accent-ink); font-weight:600">controllinghubitaly@gmail.com</a>.</p>
+        <p style="color:var(--ink-2); margin-bottom:0">Preferite l'email? Scriveteci a <a href="mailto:info@controllinghub.com" style="color:var(--accent-ink); font-weight:600">info@controllinghub.com</a>.</p>
       </div>
       <div>
         <div id="err-box" style="display:none; background:var(--surface); border:1px solid var(--amber); border-left:4px solid var(--amber); border-radius:var(--radius); padding:18px; margin-bottom:14px">
-          <p style="margin:0; font-size:15.5px; color:var(--ink-2)">Invio non riuscito. Riprovate tra poco, oppure scriveteci a <a href="mailto:controllinghubitaly@gmail.com" style="color:var(--accent-ink); font-weight:600">controllinghubitaly@gmail.com</a> indicando azienda e recapito.</p>
+          <p style="margin:0; font-size:15.5px; color:var(--ink-2)">Invio non riuscito. Riprovate tra poco, oppure scriveteci a <a href="mailto:info@controllinghub.com" style="color:var(--accent-ink); font-weight:600">info@controllinghub.com</a> indicando azienda e recapito.</p>
         </div>
         <div id="ok-box" style="display:none; background:var(--accent-soft); border:1px solid var(--accent); border-radius:var(--radius); padding:24px">
           <h3 style="font-size:19px; margin-bottom:8px">Richiesta ricevuta</h3>
           <p style="color:var(--ink-2); margin:0">Grazie. Vi rispondiamo entro un giorno lavorativo all'indirizzo che avete indicato.</p>
         </div>
-        <form id='f' method='POST' action='https://formsubmit.co/controllinghubitaly@gmail.com'>
-          <input type="hidden" name="_subject" value="Nuova richiesta dal sito ControllingHub">
-          <input type="hidden" name="_template" value="table">
+        <form id='f' method='POST' action='/api/contatti'>
+          <input type="hidden" name="lingua" value="it">
           <p style="display:none"><label>Non compilare questo campo: <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
           <div><label for="az">Azienda</label><input id="az" name="azienda" type="text" autocomplete="organization" required></div>
           <div><label for="nome">Nome e ruolo</label><input id="nome" name="nome" type="text" autocomplete="name" required></div>
@@ -545,7 +544,7 @@ footer{padding:36px 0; border-top:1px solid var(--line); font-size:14px; color:v
 <footer>
   <div class="wrap foot">
     <span>ControllingHub — controllo di gestione per PMI</span>
-    <span><a href="mailto:controllinghubitaly@gmail.com" style="text-decoration:none">controllinghubitaly@gmail.com</a> &middot; <a href="/food-cost.html" style="text-decoration:none">Calcolatore food cost</a> &middot; <a href="#contatti" style="text-decoration:none">Contatti</a></span>
+    <span><a href="mailto:info@controllinghub.com" style="text-decoration:none">info@controllinghub.com</a> &middot; <a href="/food-cost.html" style="text-decoration:none">Calcolatore food cost</a> &middot; <a href="#contatti" style="text-decoration:none">Contatti</a></span>
   </div>
 </footer>
 
@@ -567,14 +566,14 @@ footer{padding:36px 0; border-top:1px solid var(--line); font-size:14px; color:v
 
     var dati = Object.fromEntries(new FormData(form));
 
-    fetch('https://formsubmit.co/ajax/controllinghubitaly@gmail.com', {
+    fetch('https://controllinghub.com/api/contatti', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(dati)
     })
     .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
     .then(function (res) {
-      if (!res.ok || String(res.j.success) !== 'true') throw new Error(res.j.message || 'errore');
+      if (!res.ok || res.j.success !== true) throw new Error(res.j.message || 'errore');
       form.style.display = 'none';
       if (box) box.style.display = 'block';
     })

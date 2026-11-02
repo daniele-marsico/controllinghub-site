@@ -4,7 +4,7 @@ Source of [controllinghub.com](https://controllinghub.com): management control, 
 
 - Single static page (`index.html`): HTML + CSS, no build step, no framework
 - Light / dark theme via `prefers-color-scheme`
-- Contact form handled by **FormSubmit** (messages forwarded to controllinghubitaly@gmail.com, honeypot field against spam)
+- Contact form posts to `/api/contatti`, a Cloudflare Worker (`worker/contatti.js`) that emails each request to controllinghubitaly@gmail.com via Cloudflare Email Routing (honeypot field against spam)
 - Hosted on **Cloudflare Pages** at controllinghub.com: every push to `main` is deployed automatically
 
 ## Local preview

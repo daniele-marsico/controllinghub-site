@@ -502,19 +502,18 @@ footer{padding:36px 0; border-top:1px solid var(--line); font-size:14px; color:v
         <h2 class="serif" style="font-size:clamp(26px,3.6vw,38px); margin-bottom:14px">Let's start with a call</h2>
         <p style="color:var(--ink-2)">Thirty minutes, free, no sales pitch. Tell us about your situation and we'll tell you frankly whether we can help, and if not, we'll tell you that too.</p>
         <p style="color:var(--ink-2)">Fill in the form alongside: we reply within one business day.</p>
-        <p style="color:var(--ink-2); margin-bottom:0">Prefer email? Write to us at <a href="mailto:controllinghubitaly@gmail.com" style="color:var(--accent-ink); font-weight:600">controllinghubitaly@gmail.com</a>.</p>
+        <p style="color:var(--ink-2); margin-bottom:0">Prefer email? Write to us at <a href="mailto:info@controllinghub.com" style="color:var(--accent-ink); font-weight:600">info@controllinghub.com</a>.</p>
       </div>
       <div>
         <div id="err-box" style="display:none; background:var(--surface); border:1px solid var(--amber); border-left:4px solid var(--amber); border-radius:var(--radius); padding:18px; margin-bottom:14px">
-          <p style="margin:0; font-size:15.5px; color:var(--ink-2)">Sending failed. Please try again shortly, or write to us at <a href="mailto:controllinghubitaly@gmail.com" style="color:var(--accent-ink); font-weight:600">controllinghubitaly@gmail.com</a> with your company name and contact details.</p>
+          <p style="margin:0; font-size:15.5px; color:var(--ink-2)">Sending failed. Please try again shortly, or write to us at <a href="mailto:info@controllinghub.com" style="color:var(--accent-ink); font-weight:600">info@controllinghub.com</a> with your company name and contact details.</p>
         </div>
         <div id="ok-box" style="display:none; background:var(--accent-soft); border:1px solid var(--accent); border-radius:var(--radius); padding:24px">
           <h3 style="font-size:19px; margin-bottom:8px">Request received</h3>
           <p style="color:var(--ink-2); margin:0">Thank you. We will reply within one business day to the address you provided.</p>
         </div>
-        <form id='f' method='POST' action='https://formsubmit.co/controllinghubitaly@gmail.com'>
-          <input type="hidden" name="_subject" value="New request from the ControllingHub website (EN)">
-          <input type="hidden" name="_template" value="table">
+        <form id='f' method='POST' action='/api/contatti'>
+          <input type="hidden" name="lingua" value="en">
           <p style="display:none"><label>Do not fill in this field: <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
           <div><label for="az">Company</label><input id="az" name="azienda" type="text" autocomplete="organization" required></div>
           <div><label for="nome">Name and role</label><input id="nome" name="nome" type="text" autocomplete="name" required></div>
@@ -544,7 +543,7 @@ footer{padding:36px 0; border-top:1px solid var(--line); font-size:14px; color:v
 <footer>
   <div class="wrap foot">
     <span>ControllingHub — management control for SMEs</span>
-    <span><a href="mailto:controllinghubitaly@gmail.com" style="text-decoration:none">controllinghubitaly@gmail.com</a> &middot; <a href="#contatti" style="text-decoration:none">Contact</a></span>
+    <span><a href="mailto:info@controllinghub.com" style="text-decoration:none">info@controllinghub.com</a> &middot; <a href="#contatti" style="text-decoration:none">Contact</a></span>
   </div>
 </footer>
 
@@ -566,14 +565,14 @@ footer{padding:36px 0; border-top:1px solid var(--line); font-size:14px; color:v
 
     var dati = Object.fromEntries(new FormData(form));
 
-    fetch('https://formsubmit.co/ajax/controllinghubitaly@gmail.com', {
+    fetch('https://controllinghub.com/api/contatti', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(dati)
     })
     .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
     .then(function (res) {
-      if (!res.ok || String(res.j.success) !== 'true') throw new Error(res.j.message || 'errore');
+      if (!res.ok || res.j.success !== true) throw new Error(res.j.message || 'errore');
       form.style.display = 'none';
       if (box) box.style.display = 'block';
     })
