@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ControllingHub — Controllo di gestione e app per la ristorazione, con l'AI</title>
-<meta name="description" content="Food cost, margini e app su misura per ordini, consegne e prenotazioni. Oltre 15 anni di controllo di gestione e l'intelligenza artificiale al servizio dei ristoranti.">
+<title>ControllingHub — Controllo di gestione e app su misura, con l'AI</title>
+<meta name="description" content="Consulenza di controllo di gestione e app costruite sul problema del cliente, con l'intelligenza artificiale. Specializzati nella ristorazione: food cost, app per ordini e prenotazioni, analisi.">
 <link rel="canonical" href="https://controllinghub.com/">
 <link rel="alternate" hreflang="it" href="https://controllinghub.com/">
 <link rel="alternate" hreflang="en" href="https://controllinghub.com/en/">
@@ -246,6 +246,25 @@ figcaption{font-size:14px; color:var(--ink-3); margin-top:10px; text-align:cente
 .badge{display:inline-block; font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--accent-ink); background:var(--accent-soft); border-radius:6px; padding:2px 7px; margin-left:6px; vertical-align:middle}
 .note{font-size:14px; color:var(--ink-3)}
 .page-hero{padding:72px 0 40px}
+
+.mnav{display:none; position:relative}
+.mnav summary{list-style:none; cursor:pointer; width:42px; height:42px; border:1px solid var(--line); border-radius:10px; display:grid; place-items:center; background:var(--surface)}
+.mnav summary::-webkit-details-marker{display:none}
+.mnav .panel{position:absolute; right:0; top:50px; min-width:230px; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:8px; box-shadow:0 20px 40px -20px rgba(20,24,31,.35); z-index:50}
+.mnav .panel a{display:block; padding:11px 12px; border-radius:9px; text-decoration:none; color:var(--ink); font-size:16px}
+.mnav .panel a:hover{background:var(--surface-2)}
+@media(max-width:900px){ .mnav{display:block} }
+.paths{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+@media(max-width:900px){ .paths{grid-template-columns:1fr} }
+.paths .card{display:flex; flex-direction:column}
+.paths .card p{flex:1}
+.paths .card .go{margin-top:16px; font-weight:600; color:var(--accent-ink); text-decoration:none}
+.sys{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+@media(max-width:900px){ .sys{grid-template-columns:1fr 1fr} }
+@media(max-width:560px){ .sys{grid-template-columns:1fr} }
+.sys .card .what{font-size:13px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3); margin-bottom:6px}
+.sys .card .tools{font-size:14.5px; color:var(--ink); font-weight:600; margin:2px 0 8px}
+@media(max-width:560px){ section{padding:64px 0} .hero{padding:56px 0 44px} .page-hero{padding:48px 0 28px} }
 </style>
 
 </head>
@@ -260,10 +279,10 @@ figcaption{font-size:14px; color:var(--ink-3); margin-top:10px; text-align:cente
       ControllingHub
     </a>
     <nav class="navlinks">
-      <a href="/#ristorazione">Ristorazione</a>
+      <a href="/servizi-digitali.html">Servizi digitali</a>
       <a href="/app-ristorante.html">App per ristoranti</a>
+      <a href="/controllo-di-gestione.html">Consulenza</a>
       <a href="/food-cost.html" class="opt">Food cost</a>
-      <a href="/controllo-di-gestione.html">Controllo 360°</a>
       <a href="/#esperienza" class="opt">Esperienza</a>
     </nav>
     <div class="nav-right">
@@ -272,6 +291,7 @@ figcaption{font-size:14px; color:var(--ink-3); margin-top:10px; text-align:cente
         <a href="/" hreflang="it" lang="it" aria-current="page">IT</a>
         <a href="/en/" hreflang="en" lang="en">EN</a>
       </nav>
+      <details class="mnav"><summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></summary><div class="panel"><a href="/servizi-digitali.html">Servizi digitali</a><a href="/app-ristorante.html">App per ristoranti</a><a href="/controllo-di-gestione.html">Consulenza</a><a href="/food-cost.html">Food cost</a><a href="/#esperienza">Esperienza</a><a href="/#contatti">Contatti</a></div></details>
     </div>
   </div>
 </header>
@@ -281,11 +301,11 @@ figcaption{font-size:14px; color:var(--ink-3); margin-top:10px; text-align:cente
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow">Controllo di gestione · App · AI per la ristorazione</span>
-      <h1 class="serif">I numeri del tuo ristorante, e le app che li rendono semplici.</h1>
-      <p class="lede">Fatture dei fornitori, turni, ordini, prenotazioni, piattaforme di consegna: in un ristorante i dati ci sono, ma sono sparsi. ControllingHub unisce oltre quindici anni di controllo di gestione e l'intelligenza artificiale per costruire strumenti su misura, che tolgono lavoro e ti dicono dove guadagni davvero.</p>
+      <span class="eyebrow">Controllo di gestione · App su misura · AI</span>
+      <h1 class="serif">Il controller che costruisce le app per gestire la tua attività.</h1>
+      <p class="lede">Oltre quindici anni di controllo di gestione e l'intelligenza artificiale, per trasformare un problema di gestione in uno strumento semplice da usare. Oggi ci concentriamo sulla ristorazione: food cost, margini e un'app tutta tua per ordini, consegne e prenotazioni.</p>
       <div class="cta-row">
-        <a class="btn" href="/app-ristorante.html">Scopri l'app per il tuo ristorante</a>
+        <a class="btn" href="/servizi-digitali.html">Scopri i servizi digitali</a>
         <a class="btn btn-ghost" href="#contatti">Prenota una call</a>
       </div>
       <p class="cta-note" style="margin-top:18px">Prima call gratuita, 30 minuti, nessun impegno.</p>
@@ -296,72 +316,39 @@ figcaption{font-size:14px; color:var(--ink-3); margin-top:10px; text-align:cente
 
 <div class="strip">
   <div class="wrap">
-    <div class="stat"><b>Food cost e margini</b><span>quanto ti resta su ogni piatto, dalle fatture vere dei fornitori</span></div>
-    <div class="stat"><b>App tutta tua</b><span>ordini, consegne e prenotazioni senza commissioni sulle vendite</span></div>
-    <div class="stat"><b>Analisi su misura</b><span>incassi, canali e clienti in un cruscotto, senza Excel</span></div>
     <div class="stat"><b>15+ anni</b><span>di controllo di gestione in automotive, motorsport e industria</span></div>
+    <div class="stat"><b>App su misura</b><span>costruite sul problema da risolvere, non su un software standard</span></div>
+    <div class="stat"><b>Ristorazione</b><span>food cost, margini, ordini e prenotazioni</span></div>
+    <div class="stat"><b>AI</b><span>per costruire in settimane, verificato da una persona</span></div>
   </div>
 </div>
 
-<section id="ristorazione">
+<section id="servizi">
   <div class="wrap">
     <div class="sec-head">
-      <h2 class="serif">Riconosci una di queste situazioni?</h2>
-      <p>Non servono più ore in ufficio. Servono strumenti che lavorino al posto tuo e numeri chiari, una volta al mese.</p>
+      <h2 class="serif">Cosa facciamo</h2>
+      <p>Tre strade, un solo punto di partenza: capire dove la tua attività perde tempo e margine.</p>
     </div>
-    <div class="grid3">
-      <div class="card"><span class="num">01</span><h3>Le piattaforme si prendono il margine</h3><p>Su ogni ordine di consegna paghi una commissione importante, e i clienti restano alla piattaforma, non a te.</p></div>
-      <div class="card"><span class="num">02</span><h3>Il food cost è a sensazione</h3><p>I prezzi dei fornitori cambiano ogni mese, il menu no. Non sai quali piatti ti fanno guadagnare e quali no.</p></div>
-      <div class="card"><span class="num">03</span><h3>Le fatture nessuno le legge</h3><p>Arrivano tutte in formato elettronico, ma nessuno le trasforma in un confronto tra quanto compri e quanto vendi.</p></div>
-      <div class="card"><span class="num">04</span><h3>Il personale pesa, ma quanto?</h3><p>Turni, extra e stagionalità: l'incidenza del personale su pranzo e cena la scopri solo dal commercialista.</p></div>
-      <div class="card"><span class="num">05</span><h3>Prenotazioni su telefono e WhatsApp</h3><p>Messaggi, chiamate durante il servizio, tavoli segnati a penna. E nessun dato su chi torna e chi no.</p></div>
-      <div class="card"><span class="num">06</span><h3>Gli incassi sono in cinque posti</h3><p>Cassa, POS, app, piattaforme di consegna: per sapere com'è andato il mese servono ore di copia e incolla.</p></div>
+    <div class="paths">
+      <div class="card"><span class="num">01</span><h3>Servizi digitali</h3><p>App e strumenti costruiti sul tuo problema di gestione: lettura automatica delle fatture, cruscotti, controlli che oggi fai a mano. Con l'AI, in settimane e non in mesi.</p><a class="go" href="/servizi-digitali.html">Servizi digitali →</a></div>
+      <div class="card"><span class="num">02</span><h3>App per ristoranti</h3><p>La tua app per asporto, consegna e prenotazioni, con il tuo nome e il tuo menu, senza commissioni sulle vendite. A partire da 39 € al mese.</p><a class="go" href="/app-ristorante.html">Guarda l'app →</a></div>
+      <div class="card"><span class="num">03</span><h3>Consulenza</h3><p>Controllo di gestione a 360° per aziende di ogni settore: marginalità, costo prodotto, budget, reporting, migrazioni di gestionale.</p><a class="go" href="/controllo-di-gestione.html">Consulenza →</a></div>
     </div>
   </div>
 </section>
 
-<section id="servizi" style="background:var(--surface-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line)">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2 class="serif">Tre modi in cui lavoriamo con i ristoranti</h2>
-      <p>Si può partire da uno solo. Di solito si comincia dai numeri, perché dicono dove conviene intervenire.</p>
-    </div>
-    <div class="grid3">
-      <div class="card"><span class="num">01</span><h3>I numeri</h3><p>Food cost dei piatti principali, incidenza del personale per turno, margine per canale (sala, asporto, consegna). Un check-up a prezzo fisso e un cruscotto mensile semplice da aggiornare.</p><p style="margin-top:12px"><a href="/food-cost.html">Prova il calcolatore food cost gratuito</a></p></div>
-      <div class="card"><span class="num">02</span><h3>L'app</h3><p>La tua app per asporto, consegna e prenotazioni, con il tuo nome e il tuo menu. I clienti ordinano da te, gli ordini arrivano in un pannello e non paghi commissioni sulle vendite.</p><p style="margin-top:12px"><a href="/app-ristorante.html">Guarda come funziona</a></p></div>
-      <div class="card"><span class="num">03</span><h3>Gli strumenti su misura</h3><p>Hai un problema di gestione che ti fa perdere tempo? Lo trasformiamo in una piccola app: lettura automatica delle fatture, confronto acquisti e vendite, cruscotto incassi, controlli che oggi fai a mano.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="app">
+<section id="app" style="background:var(--surface-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line)">
   <div class="wrap app-band">
     <div class="pair">
       <div class="phone"><img src="/img/app-menu.webp" alt="Menu dell'app con i piatti e il carrello" loading="lazy" width="540" height="1169"></div>
       <div class="phone"><img src="/img/app-prenota.webp" alt="Prenotazione di un tavolo dall'app" loading="lazy" width="540" height="1169"></div>
     </div>
     <div>
-      <span class="eyebrow">L'app per il tuo ristorante</span>
+      <span class="eyebrow" style="background:var(--surface)">Specializzazione: ristorazione</span>
       <h2 class="serif" style="font-size:clamp(26px,3.6vw,38px); margin:14px 0">Ordini, consegne e prenotazioni con il tuo nome, non con quello di una piattaforma.</h2>
-      <ul class="checks"><li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Asporto, consegna a domicilio e prenotazione tavoli in un'unica app</span></li><li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Pannello ordini in tempo reale, vista cucina e stampa</span></li><li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Punti fedeltà e codici sconto per far tornare i clienti</span></li><li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Ordine dal tavolo con QR code, come modulo opzionale</span></li><li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>I dati dei clienti restano tuoi</span></li></ul>
+      <ul class="checks"><li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Asporto, consegna e prenotazione tavoli in un'unica app</span></li><li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Pannello ordini in tempo reale e vista cucina</span></li><li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Pagamento con carta, mancia, punti e cashback</span></li><li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Conto mensile per le aziende convenzionate</span></li><li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Collegamento ai principali gestionali di cassa</span></li><li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Food cost e analisi costruiti sui tuoi dati</span></li></ul>
       <div class="price">a partire da <b>39 €</b> al mese</div>
-      <div class="cta-row"><a class="btn" href="/app-ristorante.html">Scopri l'app</a><a class="btn btn-ghost" href="#contatti">Chiedi una demo</a></div>
-    </div>
-  </div>
-</section>
-
-<section id="perche" class="ai-band">
-  <div class="wrap why">
-    <div>
-      <span class="eyebrow" style="background:var(--surface)">Il nostro metodo</span>
-      <h2 class="serif" style="font-size:clamp(26px,3.6vw,38px); margin:14px 0">Un controller che costruisce app.</h2>
-      <p style="color:var(--ink-2)">Un software generico ti chiede di adattarti a lui. Noi partiamo dal problema di gestione, quello che conosciamo dopo anni passati dentro i conti economici delle aziende, e costruiamo lo strumento che lo risolve.</p>
-      <p style="color:var(--ink-2); margin-bottom:0">L'intelligenza artificiale ci permette di farlo in settimane, non in mesi, e a costi adatti a un'attività piccola. Ogni numero e ogni funzione vengono comunque verificati da una persona prima di arrivare a te.</p>
-    </div>
-    <div class="ai-grid" style="grid-template-columns:1fr">
-      <div class="card"><h3>Dal problema allo strumento</h3><p>Per esempio: le fatture elettroniche dei fornitori lette in automatico e confrontate con le ricette del menu, per vedere il food cost reale di ogni piatto, mese per mese.</p></div>
-      <div class="card"><h3>Semplice per chi lo usa</h3><p>Niente file da aggiornare a mano: si apre dal telefono o dal computer, e lo può leggere anche chi non ha mai usato Excel.</p></div>
-      <div class="card"><h3>Costruito sui tuoi dati</h3><p>Cassa, fatture, ordini e prenotazioni: lavoriamo con quello che hai già, e ti diciamo prima cosa serve e quanto costa.</p></div>
+      <div class="cta-row"><a class="btn" href="/app-ristorante.html">Scopri l'app</a><a class="btn btn-ghost" href="/food-cost.html">Calcolatore food cost gratuito</a></div>
     </div>
   </div>
 </section>
@@ -369,19 +356,16 @@ figcaption{font-size:14px; color:var(--ink-3); margin-top:10px; text-align:cente
 <section id="esperienza">
   <div class="wrap">
     <div class="sec-head">
-      <h2 class="serif">Non solo ristorazione: oltre quindici anni di controllo di gestione</h2>
-      <p>Il metodo che portiamo nei ristoranti viene dal controllo industriale, dove i margini si misurano al centesimo e i report vanno alla proprietà e ai fondi di investimento. È la stessa esperienza che mettiamo a disposizione delle aziende di ogni settore.</p>
+      <h2 class="serif">L'esperienza dietro le app</h2>
+      <p>Il metodo nasce nel controllo industriale, dove i margini si misurano al centesimo e i report vanno alla proprietà e ai fondi di investimento. È questa esperienza a dire quale strumento serve davvero.</p>
     </div>
     <div class="exp">
-      <div class="card"><h3>Automotive</h3><p>Componentistica e sistemi per veicoli: costo prodotto, distinte base, costi orari macchina e manodopera, make or buy.</p></div>
+      <div class="card"><h3>Automotive</h3><p>Componentistica e sistemi per veicoli: costo prodotto, distinte base, costi orari macchina e manodopera, analisi make or buy.</p></div>
       <div class="card"><h3>Motorsport</h3><p>Gruppo internazionale con filiali all'estero: reporting alla proprietà e ai fondi di private equity, budget e forecast di gruppo.</p></div>
-      <div class="card"><h3>Industria</h3><p>Manifattura multinazionale: business intelligence, contabilità analitica, consolidamento e controllo dei costi industriali.</p></div>
-      <div class="card"><h3>Gestionali diversi</h3><p>Migrazioni da AS/400 a Microsoft Dynamics 365 Business Central, consolidato su Board, QlikView, Power BI, casse per la ristorazione.</p></div>
+      <div class="card"><h3>Industria</h3><p>Manifattura multinazionale: contabilità analitica, business intelligence, consolidamento e controllo dei costi industriali.</p></div>
+      <div class="card"><h3>Sistemi gestionali</h3><p>Migrazioni di ERP, consolidamento di gruppo, business intelligence e integrazione con i gestionali di cassa della ristorazione.</p></div>
     </div>
-    <div class="tags" style="margin-top:26px">
-      <span class="tag">Controllo di gestione</span><span class="tag">Food cost</span><span class="tag">Costo prodotto</span><span class="tag">Budget &amp; forecast</span><span class="tag">Consolidato</span><span class="tag">Business Central</span><span class="tag">Power BI</span><span class="tag">Power Query &amp; VBA</span><span class="tag">SQL</span><span class="tag">Claude AI</span><span class="tag">App su misura</span>
-    </div>
-    <p style="margin-top:26px"><a class="btn btn-ghost" href="/controllo-di-gestione.html">Controllo di gestione a 360° per aziende</a></p>
+    <p style="margin-top:26px"><a class="btn btn-ghost" href="/controllo-di-gestione.html#sistemi">Sistemi e strumenti che conosciamo</a></p>
   </div>
 </section>
 
@@ -389,64 +373,35 @@ figcaption{font-size:14px; color:var(--ink-3); margin-top:10px; text-align:cente
   <div class="wrap">
     <div class="sec-head">
       <h2 class="serif">Come si comincia</h2>
-      <p>Importi al netto di IVA. Nessun vincolo lungo: si parte in piccolo e si prosegue solo se il valore è evidente.</p>
+      <p>Importi al netto di IVA. Si parte in piccolo e si prosegue solo se il valore è evidente.</p>
     </div>
     <div class="plans">
       <div class="plan">
-        <div class="kicker">I numeri</div>
+        <div class="kicker">Ristorazione</div>
         <div class="amount">800 €</div>
         <div class="unit">una tantum &middot; 2–3 settimane</div>
         <h3>Check-up del ristorante</h3>
-        <p class="desc">Food cost dei piatti principali, incidenza del personale per turno, margine per canale.</p>
-        <ul>
-          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Partiamo dalle tue fatture e dagli incassi</span></li>
-          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Relazione con le tre priorità</span></li>
-          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Cruscotto mensile semplice da aggiornare</span></li>
-          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Da remoto, con due incontri</span></li>
-        </ul>
+        <p class="desc">Food cost dei piatti principali, incidenza del personale per turno, margine per canale, cruscotto mensile.</p>
         <div class="foot"><a class="btn btn-ghost" href="#contatti">Richiedi il check-up</a></div>
       </div>
       <div class="plan best">
-                <div class="kicker">L'app</div>
+        <div class="kicker">App per ristoranti</div>
         <div class="amount">da 39 €</div>
         <div class="unit">al mese &middot; senza commissioni sulle vendite</div>
         <h3>App ordini e prenotazioni</h3>
-        <p class="desc">Asporto, consegna e prenotazioni con il tuo nome. Moduli aggiuntivi su richiesta.</p>
-        <ul>
-          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Configurazione del menu inclusa</span></li>
-          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Pannello ordini e vista cucina</span></li>
-          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Punti fedeltà e promozioni</span></li>
-          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Ordine dal tavolo con QR come opzione</span></li>
-        </ul>
+        <p class="desc">Asporto, consegna e prenotazioni con il tuo nome. Moduli aggiuntivi secondo le esigenze del locale.</p>
         <div class="foot"><a class="btn" href="/app-ristorante.html">Scopri l'app</a></div>
       </div>
       <div class="plan">
-        <div class="kicker">Su misura</div>
-        <div class="amount">preventivo</div>
+        <div class="kicker">Servizi digitali</div>
+        <div class="amount">su preventivo</div>
         <div class="unit">prezzo chiuso, concordato prima</div>
-        <h3>Strumento su misura</h3>
-        <p class="desc">Un problema di gestione specifico, trasformato in un'app semplice da usare.</p>
-        <ul>
-          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Lettura automatica delle fatture fornitori</span></li>
-          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Confronto acquisti e vendite, ricette e consumi</span></li>
-          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Cruscotto incassi per canale</span></li>
-          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Automazione di un controllo fatto a mano</span></li>
-        </ul>
-        <div class="foot"><a class="btn btn-ghost" href="#contatti">Descrivi il problema</a></div>
+        <h3>App su misura</h3>
+        <p class="desc">Un problema di gestione specifico, trasformato in uno strumento semplice da usare, per ogni settore.</p>
+        <div class="foot"><a class="btn btn-ghost" href="/servizi-digitali.html">Come funziona</a></div>
       </div>
     </div>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="wrap" style="max-width:820px">
-    <div class="sec-head"><h2 class="serif">Domande frequenti</h2></div>
-    <details><summary>Ho un ristorante piccolo, ha senso?</summary><p>Sì, ed è proprio il caso per cui lavoriamo: strumenti leggeri, pensati per chi ha poco tempo. Il check-up e l'app partono da cifre adatte a un'attività con pochi dipendenti.</p></details>
-    <details><summary>L'app sostituisce le piattaforme di consegna?</summary><p>Può affiancarle o sostituirle, decidi tu. L'obiettivo è che i clienti abituali ordinino direttamente da te: su quegli ordini non paghi commissioni a una piattaforma e i dati restano tuoi. Restano solo le eventuali commissioni del circuito di pagamento, se il cliente paga con carta.</p></details>
-    <details><summary>Cosa comprende il prezzo da 39 € al mese?</summary><p>L'app per asporto, consegna e prenotazioni con il tuo menu e il pannello per gestire gli ordini. Funzioni come l'ordine dal tavolo con QR si aggiungono come moduli: in una call costruiamo la formula giusta per il tuo locale.</p></details>
-    <details><summary>Serve comprare hardware o un nuovo gestionale?</summary><p>No. L'app si apre dal browser su telefono, tablet o computer. Il controllo di gestione si costruisce su quello che hai già: cassa, fatture elettroniche, file esistenti.</p></details>
-    <details><summary>Usate l'intelligenza artificiale?</summary><p>Sì, soprattutto Claude AI, per costruire gli strumenti più in fretta e per leggere grandi quantità di dati. Ogni numero che consegniamo resta verificato da una persona: l'AI accelera il lavoro, non firma le conclusioni.</p></details>
-    <details><summary>Lavorate solo con i ristoranti?</summary><p>No. La ristorazione è il settore su cui oggi concentriamo app e strumenti, ma la nostra esperienza nasce nell'industria. Per le aziende di altri settori c'è il <a href="/controllo-di-gestione.html">controllo di gestione a 360°</a>.</p></details>
+    <p class="note" style="margin-top:18px">Per la consulenza di controllo di gestione alle aziende, vedi le <a href="/controllo-di-gestione.html#offerta">formule dedicate</a>.</p>
   </div>
 </section>
 
@@ -495,8 +450,8 @@ figcaption{font-size:14px; color:var(--ink-3); margin-top:10px; text-align:cente
 </main>
 <footer>
   <div class="wrap foot">
-    <span>ControllingHub — controllo di gestione, app e AI per la ristorazione e le imprese</span>
-    <span><a href="mailto:info@controllinghub.com" style="text-decoration:none">info@controllinghub.com</a> &middot; <a href="/app-ristorante.html" style="text-decoration:none">App per ristoranti</a> &middot; <a href="/food-cost.html" style="text-decoration:none">Calcolatore food cost</a> &middot; <a href="/controllo-di-gestione.html" style="text-decoration:none">Controllo di gestione 360°</a></span>
+    <span>ControllingHub — controllo di gestione, app su misura e AI</span>
+    <span><a href="mailto:info@controllinghub.com" style="text-decoration:none">info@controllinghub.com</a> &middot; <a href="/servizi-digitali.html" style="text-decoration:none">Servizi digitali</a> &middot; <a href="/app-ristorante.html" style="text-decoration:none">App per ristoranti</a> &middot; <a href="/controllo-di-gestione.html" style="text-decoration:none">Consulenza</a> &middot; <a href="/food-cost.html" style="text-decoration:none">Calcolatore food cost</a></span>
   </div>
 </footer>
 <script>
