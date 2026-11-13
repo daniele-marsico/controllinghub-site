@@ -215,6 +215,13 @@ footer{padding:36px 0; border-top:1px solid var(--line); font-size:14px; color:v
 .cta{border-top:1px solid var(--line);margin-top:48px;padding-top:28px}
 @media(max-width:560px){.tbl{font-size:13px}.tbl th,.tbl td{padding:8px 4px}}
 </style>
+<style>
+.navlinks{gap:20px}
+.navlinks a{white-space:nowrap}
+.navlinks a[aria-current]{color:var(--ink); font-weight:600}
+@media(max-width:1180px){ .navlinks a.opt{display:none} }
+@media(max-width:900px){ .navlinks{display:none} }
+</style>
 </head>
 <body>
 
@@ -228,18 +235,16 @@ footer{padding:36px 0; border-top:1px solid var(--line); font-size:14px; color:v
       ControllingHub
     </a>
     <nav class="navlinks">
-      <a href="/#problema">Quando serve</a>
-      <a href="/#servizi">Servizi</a>
-      <a href="/#ai">AI</a>
-      <a href="/#offerta">Formule</a>
-      <a href="/#metodo">Metodo</a>
-      <a href="/#chi">Chi siamo</a>
-      <a href="/#faq">Domande</a>
+      <a href="/#ristorazione">Ristorazione</a>
+      <a href="/app-ristorante.html">App per ristoranti</a>
+      <a href="/food-cost.html" class="opt" aria-current="page">Food cost</a>
+      <a href="/controllo-di-gestione.html">Controllo 360°</a>
+      <a href="/#esperienza" class="opt">Esperienza</a>
     </nav>
     <div class="nav-right">
       <a class="btn" href="/#contatti">Parliamone</a>
       <nav class="lang" aria-label="Lingua / Language">
-        <a href="/" hreflang="it" lang="it">IT</a>
+        <a href="/" hreflang="it" lang="it" aria-current="page">IT</a>
         <a href="/en/" hreflang="en" lang="en">EN</a>
       </nav>
     </div>
