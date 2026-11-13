@@ -18,6 +18,7 @@ export async function onRequest({ request, next }) {
     const img = `https://controllinghub.com/img/og-v-${v}.jpg`;
     return new HTMLRewriter()
       .on('meta[property="og:image"]', { element(e) { e.setAttribute('content', img); } })
+      .on('meta[property="og:url"]', { element(e) { e.setAttribute('content', 'https://controllinghub.com' + new URL(request.url).pathname + '?v=' + v); } })
       .on('meta[property="og:title"]', { element(e) { e.setAttribute('content', V[v] + ' — ControllingHub'); } })
       .transform(res);
   } catch (e) { return res; }
