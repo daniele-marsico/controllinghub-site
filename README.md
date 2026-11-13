@@ -1,8 +1,13 @@
 # ControllingHub – website
 
-Source of [controllinghub.com](https://controllinghub.com): management control, budgeting, reporting and BI for small and medium-sized companies.
+Source of [controllinghub.com](https://controllinghub.com): management control, apps and AI for restaurants, plus 360° management control for companies.
 
-- Single static page (`index.html`): HTML + CSS, no build step, no framework
+- Static pages, HTML + CSS, no build step, no framework:
+  - `index.html` – home, focused on restaurants (food cost, ordering app, custom tools) and experience
+  - `app-ristorante.html` – the restaurant ordering/booking app, with screenshots from a demo restaurant (`img/`)
+  - `controllo-di-gestione.html` – 360° management control for companies of any sector
+  - `food-cost.html` – food cost guide + free Excel calculator (`risorse/`)
+  - `en/index.html` – English version (general management control)
 - Light / dark theme via `prefers-color-scheme`
 - Contact form posts to `/api/contatti`, a Cloudflare Worker (`worker/contatti.js`) that emails each request to controllinghubitaly@gmail.com via Cloudflare Email Routing (honeypot field against spam)
 - Hosted on **Cloudflare Pages** at controllinghub.com: every push to `main` is deployed automatically
