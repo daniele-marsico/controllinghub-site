@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Controllo di gestione a 360° per aziende — ControllingHub</title>
-<meta name="description" content="Controllo di gestione, budget, reporting, costo prodotto e migrazioni ERP per aziende di ogni settore. Oltre 15 anni di esperienza in automotive, motorsport e manifattura, con l'AI.">
+<title>Consulenza: controllo di gestione a 360° — ControllingHub</title>
+<meta name="description" content="Controllo di gestione, budget, reporting, costo prodotto e migrazioni ERP per aziende di ogni settore. Oltre 15 anni di esperienza in automotive, motorsport e manifattura.">
 <link rel="canonical" href="https://controllinghub.com/controllo-di-gestione.html">
 <link rel="alternate" hreflang="it" href="https://controllinghub.com/controllo-di-gestione.html">
 <link rel="alternate" hreflang="en" href="https://controllinghub.com/en/">
@@ -246,6 +246,25 @@ figcaption{font-size:14px; color:var(--ink-3); margin-top:10px; text-align:cente
 .badge{display:inline-block; font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--accent-ink); background:var(--accent-soft); border-radius:6px; padding:2px 7px; margin-left:6px; vertical-align:middle}
 .note{font-size:14px; color:var(--ink-3)}
 .page-hero{padding:72px 0 40px}
+
+.mnav{display:none; position:relative}
+.mnav summary{list-style:none; cursor:pointer; width:42px; height:42px; border:1px solid var(--line); border-radius:10px; display:grid; place-items:center; background:var(--surface)}
+.mnav summary::-webkit-details-marker{display:none}
+.mnav .panel{position:absolute; right:0; top:50px; min-width:230px; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:8px; box-shadow:0 20px 40px -20px rgba(20,24,31,.35); z-index:50}
+.mnav .panel a{display:block; padding:11px 12px; border-radius:9px; text-decoration:none; color:var(--ink); font-size:16px}
+.mnav .panel a:hover{background:var(--surface-2)}
+@media(max-width:900px){ .mnav{display:block} }
+.paths{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+@media(max-width:900px){ .paths{grid-template-columns:1fr} }
+.paths .card{display:flex; flex-direction:column}
+.paths .card p{flex:1}
+.paths .card .go{margin-top:16px; font-weight:600; color:var(--accent-ink); text-decoration:none}
+.sys{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+@media(max-width:900px){ .sys{grid-template-columns:1fr 1fr} }
+@media(max-width:560px){ .sys{grid-template-columns:1fr} }
+.sys .card .what{font-size:13px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3); margin-bottom:6px}
+.sys .card .tools{font-size:14.5px; color:var(--ink); font-weight:600; margin:2px 0 8px}
+@media(max-width:560px){ section{padding:64px 0} .hero{padding:56px 0 44px} .page-hero{padding:48px 0 28px} }
 </style>
 
 </head>
@@ -260,10 +279,10 @@ figcaption{font-size:14px; color:var(--ink-3); margin-top:10px; text-align:cente
       ControllingHub
     </a>
     <nav class="navlinks">
-      <a href="/#ristorazione">Ristorazione</a>
+      <a href="/servizi-digitali.html">Servizi digitali</a>
       <a href="/app-ristorante.html">App per ristoranti</a>
+      <a href="/controllo-di-gestione.html" aria-current="page">Consulenza</a>
       <a href="/food-cost.html" class="opt">Food cost</a>
-      <a href="/controllo-di-gestione.html" aria-current="page">Controllo 360°</a>
       <a href="/#esperienza" class="opt">Esperienza</a>
     </nav>
     <div class="nav-right">
@@ -272,6 +291,7 @@ figcaption{font-size:14px; color:var(--ink-3); margin-top:10px; text-align:cente
         <a href="/" hreflang="it" lang="it" aria-current="page">IT</a>
         <a href="/en/" hreflang="en" lang="en">EN</a>
       </nav>
+      <details class="mnav"><summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></summary><div class="panel"><a href="/servizi-digitali.html">Servizi digitali</a><a href="/app-ristorante.html">App per ristoranti</a><a href="/controllo-di-gestione.html">Consulenza</a><a href="/food-cost.html">Food cost</a><a href="/#esperienza">Esperienza</a><a href="/#contatti">Contatti</a></div></details>
     </div>
   </div>
 </header>
@@ -279,9 +299,9 @@ figcaption{font-size:14px; color:var(--ink-3); margin-top:10px; text-align:cente
 <main id="top">
 <section class="hero page-hero">
   <div class="wrap">
-    <span class="eyebrow">Controllo di gestione a 360°</span>
+    <span class="eyebrow">Consulenza · Controllo di gestione a 360°</span>
     <h1 class="serif">Sai quanto fatturi. Sai anche dove guadagni davvero?</h1>
-    <p class="lede">Oltre quindici anni di controllo di gestione in automotive, motorsport e manifattura, ora a disposizione di aziende di ogni settore. Costruiamo il controllo di gestione che serve per decidere ogni mese, e lo rendiamo più semplice con l'intelligenza artificiale e strumenti su misura.</p>
+    <p class="lede">Oltre quindici anni di controllo di gestione in automotive, motorsport e manifattura, a disposizione di aziende di ogni settore. Costruiamo il controllo di gestione che serve per decidere ogni mese, e lo rendiamo più semplice con l'intelligenza artificiale e strumenti su misura.</p>
     <div class="cta-row">
       <a class="btn" href="#offerta">Vedi le formule</a>
       <a class="btn btn-ghost" href="/#contatti">Prenota una call conoscitiva</a>
@@ -294,12 +314,12 @@ figcaption{font-size:14px; color:var(--ink-3); margin-top:10px; text-align:cente
   <div class="wrap">
     <div class="stat"><b>Automotive</b><span>costo prodotto, distinte base, costi orari, make or buy</span></div>
     <div class="stat"><b>Motorsport</b><span>gruppo internazionale, reporting a proprietà e fondi</span></div>
-    <div class="stat"><b>Industria</b><span>BI, contabilità analitica, consolidamento</span></div>
+    <div class="stat"><b>Industria</b><span>contabilità analitica, BI, consolidamento</span></div>
     <div class="stat"><b>Migrazioni ERP</b><span>dati, quadrature e reporting nel nuovo gestionale</span></div>
   </div>
 </div>
 
-<section id="chi">
+<section id="esperienza">
   <div class="wrap">
     <div class="about">
       <div>
@@ -307,16 +327,27 @@ figcaption{font-size:14px; color:var(--ink-3); margin-top:10px; text-align:cente
         <p class="about-quote">Una struttura snella e senior. Chi entra nei vostri numeri è chi ne risponde davanti a voi: nessun profilo junior a rotazione, nessun passaggio di mano a metà progetto.</p>
       </div>
       <div>
-        <p style="color:var(--ink-2)">Oltre quindici anni di controllo di gestione in contesti industriali: <strong>automotive</strong> (componentistica e sistemi per veicoli), <strong>motorsport</strong> (gruppo internazionale con filiali all'estero e fondi di private equity nel capitale), <strong>manifattura multinazionale</strong>. Contabilità analitica, costo prodotto, magazzino, consolidamento di gruppi, reporting verso la proprietà e gli investitori, supporto a operazioni di M&amp;A.</p>
-        <p style="color:var(--ink-2)">Conosciamo gestionali molto diversi tra loro: migrazioni da AS/400 a Microsoft Dynamics 365 Business Central, consolidato su Board, business intelligence con QlikView e Power BI, dati di produzione dai sistemi MES, casse per la ristorazione. Seguiamo le aziende nei cambi di gestionale, dalla migrazione dei dati alla ricostruzione del reporting.</p>
-        <p style="color:var(--ink-2); margin-bottom:0">Oggi una parte consistente del lavoro passa dagli strumenti di intelligenza artificiale, Claude AI in testa: analisi di estrazioni da decine di migliaia di righe, query e automazioni, e app su misura che sostituiscono i file fatti a mano.</p>
-        <div class="tags">
-          <span class="tag">Automotive</span><span class="tag">Motorsport</span><span class="tag">Manifattura</span><span class="tag">Ristorazione</span>
-          <span class="tag">Controllo di gestione</span><span class="tag">Budget &amp; forecast</span><span class="tag">Costo prodotto</span><span class="tag">Consolidato</span>
-          <span class="tag">Business Central</span><span class="tag">AS/400</span><span class="tag">Board</span><span class="tag">QlikView</span><span class="tag">Power BI</span>
-          <span class="tag">Power Query &amp; VBA</span><span class="tag">SQL</span><span class="tag">Claude AI</span><span class="tag">App su misura</span>
-        </div>
+        <p style="color:var(--ink-2)">Oltre quindici anni di controllo di gestione in contesti industriali: <strong>automotive</strong> (componentistica e sistemi per veicoli), <strong>motorsport</strong> (gruppo internazionale con filiali all'estero e fondi di private equity nel capitale), <strong>manifattura multinazionale</strong>.</p>
+        <p style="color:var(--ink-2)">Contabilità analitica, costo prodotto, magazzino, consolidamento di gruppi, reporting verso la proprietà e gli investitori, supporto a operazioni di M&amp;A. Seguiamo le aziende anche nei cambi di gestionale, dalla migrazione dei dati alla ricostruzione del reporting dopo il passaggio.</p>
+        <p style="color:var(--ink-2); margin-bottom:0">Oggi una parte consistente del lavoro passa dall'intelligenza artificiale, Claude AI in testa: analisi di estrazioni da decine di migliaia di righe, automazioni e <a href="/servizi-digitali.html">app su misura</a> che sostituiscono i file fatti a mano.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="sistemi" style="background:var(--surface-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="serif">Sistemi e strumenti</h2>
+      <p>Esperienza diretta sui principali sistemi con cui le aziende gestiscono dati, conti e reporting. Per ogni area, cosa sappiamo fare.</p>
+    </div>
+    <div class="sys">
+      <div class="card"><div class="what">ERP e gestionali</div><div class="tools">Microsoft Dynamics 365 Business Central, AS/400</div><p>Migrazione da sistemi legacy, bonifica delle anagrafiche, quadrature tra moduli e contabilità, reporting ricostruito sul nuovo gestionale.</p></div>
+      <div class="card"><div class="what">Consolidamento e pianificazione</div><div class="tools">Board</div><p>Bilancio consolidato di gruppo con filiali estere, piano dei conti di gruppo e scritture di rettifica, budget e forecast.</p></div>
+      <div class="card"><div class="what">Business intelligence</div><div class="tools">Power BI, QlikView</div><p>Cruscotti direzionali su vendite, acquisti, magazzino e costi, alimentati direttamente dai dati del gestionale.</p></div>
+      <div class="card"><div class="what">Dati e automazione</div><div class="tools">Power Query, VBA, SQL</div><p>Estrazioni dirette dai database, controlli automatici e report ricorrenti che non richiedono più lavoro manuale.</p></div>
+      <div class="card"><div class="what">Produzione</div><div class="tools">Sistemi MES</div><p>Costi orari macchina e manodopera calcolati dai dati reali di produzione e riconciliati con il conto economico.</p></div>
+      <div class="card"><div class="what">Ristorazione</div><div class="tools">Gestionali di cassa e fatturazione elettronica</div><p>Integrazione con i principali gestionali di cassa (Cassa in Cloud, Tilby e altri) e lettura automatica delle fatture dei fornitori.</p></div>
     </div>
   </div>
 </section>
@@ -383,49 +414,6 @@ figcaption{font-size:14px; color:var(--ink-3); margin-top:10px; text-align:cente
         </ul>
       </div>
     </div>
-  </div>
-</section>
-
-<section id="ai" class="ai-band">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow" style="background:var(--surface)">Novità</span>
-      <h2 class="serif">Claude AI nelle attività di tutti i giorni</h2>
-      <p>L'intelligenza artificiale non serve solo ai grandi progetti. Usata bene, toglie ore di lavoro ripetitivo a chi in amministrazione, controllo e direzione passa le giornate tra file, email e report. Vi aiutiamo a introdurre Claude AI nel lavoro quotidiano del vostro team, con regole chiare e risultati misurabili.</p>
-    </div>
-    <div class="ai-grid">
-      <div class="card">
-        <span class="num">01</span>
-        <h3>Analisi e numeri</h3>
-        <ul>
-          <li>Lettura di estrazioni Excel e CSV da migliaia di righe</li>
-          <li>Prime quadrature, anomalie e scostamenti in pochi minuti</li>
-          <li>Commento ai report mensili e alle variazioni rispetto al budget</li>
-          <li>Formule, Power Query e macro scritte e spiegate</li>
-        </ul>
-      </div>
-      <div class="card">
-        <span class="num">02</span>
-        <h3>Documenti e comunicazione</h3>
-        <ul>
-          <li>Bozze di email, relazioni e note per la proprietà o la banca</li>
-          <li>Sintesi di contratti, verbali e documenti lunghi</li>
-          <li>Procedure interne e manuali operativi scritti in fretta</li>
-          <li>Traduzioni per filiali estere, clienti e fornitori</li>
-        </ul>
-      </div>
-      <div class="card">
-        <span class="num">03</span>
-        <h3>Avvio e affiancamento</h3>
-        <ul>
-          <li>Scelta dei casi d'uso che fanno risparmiare più tempo</li>
-          <li>Prompt e modelli pronti per le vostre attività ricorrenti</li>
-          <li>Regole su quali dati condividere e quali no</li>
-          <li>Formazione pratica sul lavoro vero, non in aula</li>
-        </ul>
-      </div>
-    </div>
-    <p class="ai-note">Lavoriamo noi stessi ogni giorno con Claude AI di Anthropic, ed è da quell'esperienza che nascono i casi d'uso che proponiamo. Ogni risultato prodotto con l'AI resta verificato da una persona prima di arrivare a voi o ai vostri interlocutori.</p>
   </div>
 </section>
 
@@ -546,8 +534,8 @@ figcaption{font-size:14px; color:var(--ink-3); margin-top:10px; text-align:cente
 </main>
 <footer>
   <div class="wrap foot">
-    <span>ControllingHub — controllo di gestione, app e AI per la ristorazione e le imprese</span>
-    <span><a href="mailto:info@controllinghub.com" style="text-decoration:none">info@controllinghub.com</a> &middot; <a href="/app-ristorante.html" style="text-decoration:none">App per ristoranti</a> &middot; <a href="/food-cost.html" style="text-decoration:none">Calcolatore food cost</a> &middot; <a href="/controllo-di-gestione.html" style="text-decoration:none">Controllo di gestione 360°</a></span>
+    <span>ControllingHub — controllo di gestione, app su misura e AI</span>
+    <span><a href="mailto:info@controllinghub.com" style="text-decoration:none">info@controllinghub.com</a> &middot; <a href="/servizi-digitali.html" style="text-decoration:none">Servizi digitali</a> &middot; <a href="/app-ristorante.html" style="text-decoration:none">App per ristoranti</a> &middot; <a href="/controllo-di-gestione.html" style="text-decoration:none">Consulenza</a> &middot; <a href="/food-cost.html" style="text-decoration:none">Calcolatore food cost</a></span>
   </div>
 </footer>
 </body>

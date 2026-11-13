@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Servizi digitali: app su misura per la gestione, costruite con l'AI — ControllingHub</title>
+<meta name="description" content="App e strumenti su misura per risolvere problemi di gestione: lettura automatica delle fatture, cruscotti, ordini e prenotazioni, automazioni. Progettati da un controller, costruiti con l'AI.">
+<link rel="canonical" href="https://controllinghub.com/servizi-digitali.html">
+<link rel="alternate" hreflang="it" href="https://controllinghub.com/servizi-digitali.html">
+<link rel="alternate" hreflang="en" href="https://controllinghub.com/en/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FBFAF8; --surface:#FFFFFF; --surface-2:#F3F1ED;
+  --ink:#14181F; --ink-2:#4A5260; --ink-3:#7C8492;
+  --line:#E3DFD8; --accent:#1B4D3E; --accent-soft:#E8F0EC; --accent-ink:#1B4D3E;
+  --amber:#B4762A;
+  --radius:14px;
+  --maxw:1080px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1116; --surface:#161B22; --surface-2:#1C222B;
+    --ink:#EDEFF2; --ink-2:#AEB6C2; --ink-3:#7F8896;
+    --line:#262D38; --accent:#7FD6AE; --accent-soft:#16241E; --accent-ink:#7FD6AE;
+    --amber:#E0A458;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1116; --surface:#161B22; --surface-2:#1C222B;
+  --ink:#EDEFF2; --ink-2:#AEB6C2; --ink-3:#7F8896;
+  --line:#262D38; --accent:#7FD6AE; --accent-soft:#16241E; --accent-ink:#7FD6AE;
+  --amber:#E0A458;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:Inter, "Helvetica Neue", Arial, sans-serif;
+  font-size:17px; line-height:1.62; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px}
+h1,h2,h3{line-height:1.15; margin:0; letter-spacing:-0.02em}
+.serif{font-family:"Instrument Serif", Georgia, serif; font-weight:400; letter-spacing:-0.01em}
+p{margin:0 0 1em}
+a{color:inherit}
+
+/* header */
+header{
+  position:sticky; top:0; z-index:50; background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+}
+.nav{display:flex; align-items:center; justify-content:space-between; height:66px}
+.logo{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:-0.03em; font-size:19px; text-decoration:none}
+.mark{width:26px;height:26px;flex:none}
+.navlinks{display:flex; gap:26px; font-size:15px; color:var(--ink-2)}
+.navlinks a{text-decoration:none}
+.navlinks a:hover{color:var(--ink)}
+@media(max-width:760px){ .navlinks{display:none} }
+.btn{
+  display:inline-block; background:var(--accent); color:var(--bg); text-decoration:none;
+  padding:11px 20px; border-radius:999px; font-weight:600; font-size:15px; border:none; cursor:pointer;
+  transition:transform .15s ease, opacity .15s ease;
+}
+.btn:hover{transform:translateY(-1px); opacity:.92}
+.btn-ghost{background:transparent; color:var(--ink); border:1px solid var(--line)}
+.nav-right{display:flex; align-items:center; gap:14px}
+.lang{display:inline-flex; border:1px solid var(--line); border-radius:999px; padding:3px; font-size:13px; font-weight:600; background:var(--surface)}
+.lang a{padding:4px 10px; border-radius:999px; text-decoration:none; color:var(--ink-3); line-height:1.3}
+.lang a:hover{color:var(--ink)}
+.lang a[aria-current="page"]{background:var(--ink); color:var(--bg)}
+@media(max-width:440px){ .nav-right .btn{display:none} }
+
+/* ai */
+.ai-band{background:var(--accent-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.ai-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+@media(max-width:860px){ .ai-grid{grid-template-columns:1fr} }
+.ai-grid .card ul{margin:12px 0 0; padding-left:18px; color:var(--ink-2); font-size:15.5px}
+.ai-grid .card li{margin-bottom:6px}
+.ai-note{margin-top:22px; font-size:15px; color:var(--ink-2); max-width:78ch}
+
+/* hero */
+.hero{padding:86px 0 64px}
+.eyebrow{
+  display:inline-block; font-size:13px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--accent-ink); background:var(--accent-soft); padding:6px 13px; border-radius:999px; margin-bottom:26px;
+}
+.hero h1{font-size:clamp(34px, 5.4vw, 60px); max-width:16ch; margin-bottom:22px}
+.hero .lede{font-size:clamp(17px,2.1vw,20px); color:var(--ink-2); max-width:58ch; margin-bottom:32px}
+.cta-row{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
+.cta-note{font-size:14px; color:var(--ink-3)}
+
+/* strip */
+.strip{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--surface-2)}
+.strip .wrap{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; padding:0 24px}
+.stat{padding:28px 10px 26px}
+.stat b{display:block; font-family:"Instrument Serif",Georgia,serif; font-size:26px; line-height:1.1; margin-bottom:8px; color:var(--accent-ink)}
+.stat span{font-size:14px; color:var(--ink-2)}
+@media(max-width:760px){ .strip .wrap{grid-template-columns:repeat(2,1fr)} }
+
+section{padding:76px 0}
+.sec-head{max-width:62ch; margin-bottom:44px}
+.sec-head h2{font-size:clamp(26px,3.6vw,38px); margin-bottom:14px}
+.sec-head p{color:var(--ink-2); margin:0}
+
+/* problem cards */
+.grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+@media(max-width:860px){ .grid3{grid-template-columns:1fr} }
+.card{
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:26px;
+}
+.card h3{font-size:18px; margin-bottom:10px}
+.card p{color:var(--ink-2); font-size:15.5px; margin:0}
+.card .num{font-family:"Instrument Serif",Georgia,serif; font-size:24px; color:var(--accent-ink); display:block; margin-bottom:12px}
+
+/* services */
+.svc{display:grid; grid-template-columns:repeat(2,1fr); gap:20px}
+@media(max-width:860px){ .svc{grid-template-columns:1fr} }
+.svc .card ul{margin:12px 0 0; padding-left:18px; color:var(--ink-2); font-size:15.5px}
+.svc .card li{margin-bottom:6px}
+
+/* offer */
+.offer{
+  background:var(--surface); border:1px solid var(--line); border-radius:20px; overflow:hidden;
+  display:grid; grid-template-columns:1.25fr 1fr;
+}
+@media(max-width:860px){ .offer{grid-template-columns:1fr} }
+.offer-main{padding:40px}
+.offer-side{padding:40px; background:var(--accent-soft); border-left:1px solid var(--line)}
+@media(max-width:860px){ .offer-side{border-left:none; border-top:1px solid var(--line)} }
+.price{font-family:"Instrument Serif",Georgia,serif; font-size:46px; line-height:1; margin-bottom:4px}
+.plans{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:stretch}
+@media(max-width:900px){ .plans{grid-template-columns:1fr} }
+.plan{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:28px; display:flex; flex-direction:column}
+.plan.best{border-color:var(--accent); box-shadow:0 0 0 1px var(--accent)}
+.plan .kicker{font-size:12.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-3); margin-bottom:14px}
+.plan.best .kicker{color:var(--accent-ink)}
+.plan .amount{font-family:"Instrument Serif",Georgia,serif; font-size:38px; line-height:1; margin-bottom:2px}
+.plan .unit{font-size:14.5px; color:var(--ink-3); margin-bottom:16px}
+.plan h3{font-size:19px; margin-bottom:8px}
+.plan .desc{font-size:15.5px; color:var(--ink-2); margin-bottom:16px}
+.plan ul{list-style:none; padding:0; margin:0 0 20px}
+.plan li{display:flex; gap:9px; align-items:flex-start; font-size:15px; color:var(--ink-2); margin-bottom:9px}
+.plan li svg{flex:none; margin-top:4px; color:var(--accent-ink)}
+.plan .foot{margin-top:auto}
+.ribbon{display:inline-block; font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; background:var(--accent); color:var(--bg); padding:4px 10px; border-radius:999px; margin-bottom:12px}
+.extra{margin-top:22px; background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius); padding:24px 26px; display:grid; grid-template-columns:1fr 1fr; gap:26px}
+@media(max-width:900px){ .extra{grid-template-columns:1fr; gap:18px} }
+.extra h4{font-size:16px; margin:0 0 6px}
+.extra p{font-size:15px; color:var(--ink-2); margin:0}
+.price small{font-family:Inter,sans-serif; font-size:15px; color:var(--ink-2); font-weight:500}
+.checks{list-style:none; padding:0; margin:20px 0 0}
+.checks li{display:flex; gap:11px; align-items:flex-start; margin-bottom:11px; font-size:15.5px; color:var(--ink-2)}
+.checks svg{flex:none; margin-top:4px}
+
+/* method */
+.steps{display:grid; grid-template-columns:repeat(4,1fr); gap:20px; counter-reset:s}
+@media(max-width:860px){ .steps{grid-template-columns:1fr 1fr} }
+@media(max-width:520px){ .steps{grid-template-columns:1fr} }
+.step{border-top:2px solid var(--accent); padding-top:16px}
+.step b{display:block; font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--accent-ink); margin-bottom:8px}
+.step h3{font-size:17px; margin-bottom:8px}
+.step p{color:var(--ink-2); font-size:15px; margin:0}
+
+/* about */
+.about{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start}
+@media(max-width:860px){ .about{grid-template-columns:1fr; gap:28px} }
+.about-quote{
+  font-family:"Instrument Serif",Georgia,serif; font-size:clamp(22px,3vw,30px); line-height:1.35;
+  border-left:3px solid var(--accent); padding-left:22px; color:var(--ink);
+}
+.tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:22px}
+.tag{font-size:13.5px; padding:5px 12px; border:1px solid var(--line); border-radius:999px; color:var(--ink-2); background:var(--surface)}
+
+/* faq */
+details{border-bottom:1px solid var(--line); padding:18px 0}
+details summary{cursor:pointer; font-weight:600; font-size:17px; list-style:none; display:flex; justify-content:space-between; gap:16px}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+"; color:var(--accent-ink); font-weight:400; font-size:22px; line-height:1}
+details[open] summary::after{content:"–"}
+details p{color:var(--ink-2); margin:12px 0 0; font-size:16px; max-width:70ch}
+
+/* contact */
+.contact{background:var(--surface-2); border-top:1px solid var(--line)}
+.contact-box{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center}
+@media(max-width:860px){ .contact-box{grid-template-columns:1fr; gap:28px} }
+form{display:grid; gap:12px}
+label{font-size:14px; font-weight:600; color:var(--ink-2)}
+input,textarea,select{
+  width:100%; font-family:inherit; font-size:16px; padding:12px 14px; color:var(--ink);
+  background:var(--surface); border:1px solid var(--line); border-radius:10px;
+}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--accent); outline-offset:1px}
+textarea{min-height:110px; resize:vertical}
+.formnote{font-size:13.5px; color:var(--ink-3); margin:4px 0 0}
+
+footer{padding:36px 0; border-top:1px solid var(--line); font-size:14px; color:var(--ink-3)}
+.foot{display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap}
+</style>
+<style>
+.nav{gap:18px}
+.navlinks{gap:20px}
+.navlinks a{white-space:nowrap}
+.navlinks a[aria-current]{color:var(--ink); font-weight:600}
+@media(max-width:1180px){ .navlinks a.opt{display:none} }
+@media(max-width:900px){ .navlinks{display:none} }
+.hero-grid{display:grid; grid-template-columns:1.25fr .75fr; gap:48px; align-items:center}
+@media(max-width:900px){ .hero-grid{grid-template-columns:1fr} .hero-shot{display:none} }
+.hero h1{max-width:20ch}
+.phone{border-radius:34px; border:9px solid #14181F; background:#14181F; box-shadow:0 30px 60px -28px rgba(20,24,31,.45); overflow:hidden; aspect-ratio:390/844; max-width:270px}
+.phone img{display:block; width:100%; height:100%; object-fit:cover; object-position:top}
+.hero-shot{display:flex; justify-content:center}
+.screens{display:grid; grid-template-columns:repeat(4,1fr); gap:22px; margin:8px 0 10px}
+@media(max-width:900px){ .screens{grid-template-columns:repeat(2,1fr)} }
+.screens figure{margin:0}
+.screens .phone{max-width:none}
+figcaption{font-size:14px; color:var(--ink-3); margin-top:10px; text-align:center}
+.desk{border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface); box-shadow:0 24px 50px -30px rgba(20,24,31,.35)}
+.desk .bar{height:30px; background:var(--surface-2); border-bottom:1px solid var(--line); display:flex; gap:6px; align-items:center; padding:0 12px}
+.desk .bar i{width:9px; height:9px; border-radius:50%; background:var(--line); display:block}
+.desk img{display:block; width:100%; height:auto}
+.desks{display:grid; grid-template-columns:1fr 1fr; gap:22px}
+@media(max-width:860px){ .desks{grid-template-columns:1fr} }
+.app-band{display:grid; grid-template-columns:.9fr 1.1fr; gap:48px; align-items:center}
+@media(max-width:900px){ .app-band{grid-template-columns:1fr} }
+.app-band .pair{display:flex; gap:18px; justify-content:center}
+.app-band .pair .phone{max-width:220px}
+.app-band .pair .phone:nth-child(2){margin-top:46px}
+.checks{list-style:none; padding:0; margin:0 0 24px}
+.checks li{display:flex; gap:10px; align-items:flex-start; color:var(--ink-2); margin-bottom:10px}
+.checks li svg{flex:none; margin-top:5px; color:var(--accent-ink)}
+.price{display:inline-flex; align-items:baseline; gap:8px; background:var(--accent-soft); border:1px solid var(--line); border-radius:999px; padding:8px 16px; margin-bottom:22px; font-size:15px; color:var(--ink-2)}
+.price b{font-family:"Instrument Serif",Georgia,serif; font-weight:400; font-size:26px; color:var(--ink)}
+.exp{display:grid; grid-template-columns:repeat(4,1fr); gap:20px}
+@media(max-width:900px){ .exp{grid-template-columns:1fr 1fr} }
+@media(max-width:520px){ .exp{grid-template-columns:1fr} }
+.exp .card h3{margin-bottom:8px}
+.why{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start}
+@media(max-width:860px){ .why{grid-template-columns:1fr; gap:24px} }
+.mods{display:grid; grid-template-columns:1fr 1fr; gap:20px}
+@media(max-width:860px){ .mods{grid-template-columns:1fr} }
+.mods .card ul{margin:12px 0 0; padding-left:18px; color:var(--ink-2); font-size:15.5px}
+.mods .card li{margin-bottom:7px}
+.badge{display:inline-block; font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--accent-ink); background:var(--accent-soft); border-radius:6px; padding:2px 7px; margin-left:6px; vertical-align:middle}
+.note{font-size:14px; color:var(--ink-3)}
+.page-hero{padding:72px 0 40px}
+
+.mnav{display:none; position:relative}
+.mnav summary{list-style:none; cursor:pointer; width:42px; height:42px; border:1px solid var(--line); border-radius:10px; display:grid; place-items:center; background:var(--surface)}
+.mnav summary::-webkit-details-marker{display:none}
+.mnav .panel{position:absolute; right:0; top:50px; min-width:230px; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:8px; box-shadow:0 20px 40px -20px rgba(20,24,31,.35); z-index:50}
+.mnav .panel a{display:block; padding:11px 12px; border-radius:9px; text-decoration:none; color:var(--ink); font-size:16px}
+.mnav .panel a:hover{background:var(--surface-2)}
+@media(max-width:900px){ .mnav{display:block} }
+.paths{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+@media(max-width:900px){ .paths{grid-template-columns:1fr} }
+.paths .card{display:flex; flex-direction:column}
+.paths .card p{flex:1}
+.paths .card .go{margin-top:16px; font-weight:600; color:var(--accent-ink); text-decoration:none}
+.sys{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+@media(max-width:900px){ .sys{grid-template-columns:1fr 1fr} }
+@media(max-width:560px){ .sys{grid-template-columns:1fr} }
+.sys .card .what{font-size:13px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3); margin-bottom:6px}
+.sys .card .tools{font-size:14.5px; color:var(--ink); font-weight:600; margin:2px 0 8px}
+@media(max-width:560px){ section{padding:64px 0} .hero{padding:56px 0 44px} .page-hero{padding:48px 0 28px} }
+</style>
+
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="/">
+      <svg class="mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect x="1.5" y="1.5" width="29" height="29" rx="8" stroke="currentColor" stroke-width="2"/>
+        <path d="M8 21.5 L13 14.5 L18 18 L24.5 9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      ControllingHub
+    </a>
+    <nav class="navlinks">
+      <a href="/servizi-digitali.html" aria-current="page">Servizi digitali</a>
+      <a href="/app-ristorante.html">App per ristoranti</a>
+      <a href="/controllo-di-gestione.html">Consulenza</a>
+      <a href="/food-cost.html" class="opt">Food cost</a>
+      <a href="/#esperienza" class="opt">Esperienza</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn" href="/#contatti">Parliamone</a>
+      <nav class="lang" aria-label="Lingua / Language">
+        <a href="/" hreflang="it" lang="it" aria-current="page">IT</a>
+        <a href="/en/" hreflang="en" lang="en">EN</a>
+      </nav>
+      <details class="mnav"><summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></summary><div class="panel"><a href="/servizi-digitali.html">Servizi digitali</a><a href="/app-ristorante.html">App per ristoranti</a><a href="/controllo-di-gestione.html">Consulenza</a><a href="/food-cost.html">Food cost</a><a href="/#esperienza">Esperienza</a><a href="/#contatti">Contatti</a></div></details>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Servizi digitali</span>
+    <h1 class="serif">App su misura per il problema che vuoi risolvere.</h1>
+    <p class="lede">Un software generico ti chiede di adattarti a lui. Noi partiamo da ciò che vuoi migliorare nella gestione della tua attività e costruiamo lo strumento che lo fa: semplice, sui tuoi dati, pronto in settimane grazie all'intelligenza artificiale.</p>
+    <div class="cta-row">
+      <a class="btn" href="/#contatti">Descrivi il problema</a>
+      <a class="btn btn-ghost" href="#esempi">Vedi gli esempi</a>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--surface-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="serif">Come nasce un'app</h2>
+      <p>Niente progetti infiniti: si parte da un problema preciso e si arriva a uno strumento che funziona sul lavoro vero.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><b>1</b><h3>Il problema</h3><p>Una call per capire cosa ti fa perdere tempo o margine, quali dati hai già e cosa vorresti vedere.</p></div>
+      <div class="step"><b>2</b><h3>Il prototipo</h3><p>In pochi giorni una prima versione da provare, costruita sui tuoi dati reali, con prezzo chiuso concordato prima.</p></div>
+      <div class="step"><b>3</b><h3>La prova</h3><p>La usi nel lavoro di tutti i giorni e la sistemiamo insieme finché non fa esattamente quello che serve.</p></div>
+      <div class="step"><b>4</b><h3>L'uso</h3><p>Si apre da telefono o computer, anche da chi non usa Excel. Assistenza e nuove funzioni quando servono.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="esempi">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="serif">Esempi di strumenti</h2>
+      <p>Alcuni dei problemi che trasformiamo in app. Molti nascono nella ristorazione, ma la logica vale per qualsiasi attività.</p>
+    </div>
+    <div class="grid3">
+      <div class="card"><span class="num">01</span><h3>Ordini e prenotazioni</h3><p>L'app con il nome del ristorante per asporto, consegna e tavoli, con pannello ordini e vista cucina. <a href="/app-ristorante.html">Guarda l'app</a></p></div>
+      <div class="card"><span class="num">02</span><h3>Food cost dalle fatture</h3><p>Le fatture elettroniche dei fornitori lette in automatico e confrontate con le ricette: il costo reale di ogni piatto, mese per mese.</p></div>
+      <div class="card"><span class="num">03</span><h3>Cruscotto incassi</h3><p>Cassa, POS, app e piattaforme di consegna in un'unica vista: incassi per canale, giorno e turno, senza copia e incolla.</p></div>
+      <div class="card"><span class="num">04</span><h3>Costo del personale</h3><p>Turni e ore confrontati con gli incassi, per vedere l'incidenza del personale su pranzo, cena e giorni della settimana.</p></div>
+      <div class="card"><span class="num">05</span><h3>Report automatici</h3><p>I report mensili che oggi qualcuno prepara a mano, generati in automatico dai dati del gestionale.</p></div>
+      <div class="card"><span class="num">06</span><h3>Controlli e quadrature</h3><p>Riconciliazioni tra gestionale, banca e contabilità, con le anomalie evidenziate invece che cercate a mano.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="ai-band">
+  <div class="wrap why">
+    <div>
+      <span class="eyebrow" style="background:var(--surface)">Perché funziona</span>
+      <h2 class="serif" style="font-size:clamp(26px,3.6vw,38px); margin:14px 0">Un controller che costruisce app.</h2>
+      <p style="color:var(--ink-2)">Chi sviluppa software di solito non conosce i conti economici. Chi fa controllo di gestione di solito non sa costruire software. Noi partiamo da oltre quindici anni passati dentro i numeri delle aziende, e usiamo l'intelligenza artificiale per trasformare quell'esperienza in strumenti.</p>
+      <p style="color:var(--ink-2); margin-bottom:0">Il risultato è un'app che risponde a una domanda di gestione precisa, a costi adatti anche a un'attività piccola. Ogni numero e ogni funzione vengono verificati da una persona prima di arrivare a te.</p>
+    </div>
+    <div class="ai-grid" style="grid-template-columns:1fr">
+      <div class="card"><h3>Costruito sui tuoi dati</h3><p>Gestionale, cassa, fatture, ordini: lavoriamo con quello che hai già e ti diciamo prima cosa serve e quanto costa.</p></div>
+      <div class="card"><h3>Semplice per chi lo usa</h3><p>Niente file da aggiornare a mano: si apre dal telefono o dal computer e lo legge anche chi non ha mai usato Excel.</p></div>
+      <div class="card"><h3>Tuo e modificabile</h3><p>Quando il problema cambia, lo strumento cambia con lui: nuove funzioni si aggiungono senza ricominciare da capo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap" style="max-width:820px">
+    <div class="sec-head"><h2 class="serif">Domande frequenti</h2></div>
+    <details><summary>Quanto costa un'app su misura?</summary><p>Dipende dal problema: dopo la prima call ti proponiamo un prezzo chiuso, prima di iniziare. Per la ristorazione esiste anche l'app per ordini e prenotazioni già pronta, a partire da 39 € al mese.</p></details>
+    <details><summary>Serve comprare software o hardware?</summary><p>Quasi mai. Gli strumenti si aprono dal browser su telefono, tablet o computer e lavorano con i dati che hai già.</p></details>
+    <details><summary>Usate l'intelligenza artificiale?</summary><p>Sì, soprattutto Claude AI, per costruire gli strumenti più in fretta e per leggere grandi quantità di dati. Ogni numero che consegniamo resta verificato da una persona.</p></details>
+    <details><summary>I miei dati sono al sicuro?</summary><p>Si firma un accordo di riservatezza prima di ricevere qualsiasi file. I dati restano tuoi e vengono usati solo per lo strumento che costruiamo per te.</p></details>
+    <details><summary>Lavorate solo con i ristoranti?</summary><p>No. La ristorazione è il settore su cui oggi concentriamo i prodotti, ma costruiamo strumenti per attività di ogni tipo. Per la consulenza alle aziende c'è il <a href="/controllo-di-gestione.html">controllo di gestione a 360°</a>.</p></details>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="wrap">
+    <div class="contact-box">
+      <div>
+        <h2 class="serif" style="font-size:clamp(26px,3.6vw,38px); margin-bottom:14px">Hai un problema di gestione da risolvere?</h2>
+        <p style="color:var(--ink-2); margin-bottom:0">Raccontacelo in una call gratuita di 30 minuti: ti diciamo se e come si può trasformare in uno strumento, e quanto costa.</p>
+      </div>
+      <div style="align-self:center"><a class="btn" href="/#contatti">Descrivi il problema</a></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap foot">
+    <span>ControllingHub — controllo di gestione, app su misura e AI</span>
+    <span><a href="mailto:info@controllinghub.com" style="text-decoration:none">info@controllinghub.com</a> &middot; <a href="/servizi-digitali.html" style="text-decoration:none">Servizi digitali</a> &middot; <a href="/app-ristorante.html" style="text-decoration:none">App per ristoranti</a> &middot; <a href="/controllo-di-gestione.html" style="text-decoration:none">Consulenza</a> &middot; <a href="/food-cost.html" style="text-decoration:none">Calcolatore food cost</a></span>
+  </div>
+</footer>
+</body>
+</html>
